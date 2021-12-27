@@ -1,9 +1,10 @@
 package by.overone.library.dao.impl;
 
 import by.overone.library.dao.UserDAO;
+import by.overone.library.dao.mapper.UserRowMapper;
+import by.overone.library.model.Status;
 import by.overone.library.model.User;
 import lombok.AllArgsConstructor;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -12,6 +13,7 @@ import java.util.List;
 @Repository
 @AllArgsConstructor
 public class UserDAOImpl implements UserDAO {
+
 
     private final JdbcTemplate jdbcTemplate;
 
@@ -30,7 +32,13 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public List<User> getAllUser() {
-        List<User> users = jdbcTemplate.query(GET_ALL_USER_SQL, new BeanPropertyRowMapper<>(User.class));
+        List<User> users = jdbcTemplate.query(GET_ALL_USER_SQL, new UserRowMapper());
+        return users;
+    }
+
+    @Override
+    public List<User> getUserByStatus(Status status) {
+        List<User> users = jdbcTemplate.query(GET_USER_BY_STATUS_SQL, new UserRowMapper());
         return users;
     }
 }

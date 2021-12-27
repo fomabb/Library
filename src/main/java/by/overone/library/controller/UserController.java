@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/library")
+@RequestMapping("/api/users")
 public class UserController {
 
     private final UserService userService;
@@ -21,8 +21,15 @@ public class UserController {
         return userService.getAllUsers();
     }
 
+    @GetMapping("/status")
+    public List<UserDataDTO> readByStatus() {
+        System.out.println("crate UserByStatus");
+        return userService.getUserByStatus();
+    }
+
     @GetMapping("/hello")
     public String read() {
-        return "Hello World";
+        System.out.println("Hello");
+        return "Hello";
     }
 }

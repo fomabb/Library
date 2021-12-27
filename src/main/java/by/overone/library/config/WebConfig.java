@@ -1,5 +1,8 @@
 package by.overone.library.config;
 
+import by.overone.library.dao.UserDAO;
+import by.overone.library.service.UserService;
+import by.overone.library.service.impl.UserServiceImpl;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.context.annotation.Bean;
