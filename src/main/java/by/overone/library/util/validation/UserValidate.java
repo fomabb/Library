@@ -12,7 +12,7 @@ public class UserValidate {
 //    public static boolean validateRegistration(UserRegistrationDTO user){
 //        return validateLogin(user.getLogin()) && validateEmail(user.getEmail()) && validatePassword(user.getPassword());
 //    }
-//
+
 //    public static boolean validateUserDetails(UserDetailsDTO user) {
 //        return validateName(user.getName()) && validateSurname(user.getSurname()) && validateAddress(user.getAddress())
 //                && validatePhoneNumber(user.getPhoneNumber());

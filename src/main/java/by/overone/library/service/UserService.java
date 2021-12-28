@@ -8,5 +8,11 @@ public interface UserService {
 
     List<UserDataDTO> getAllUsers();
 
-    List<UserDataDTO> getUserByStatus();
+    List<UserDataDTO> getUserByStatus(String  status);
+
+    UserDataDTO getUserById(long id);
+
+    UserDataDTO getUserByLogin(String login);
+
+    UserDataDTO getUserByFullName(String name, String surname);
 }
