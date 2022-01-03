@@ -1,6 +1,6 @@
 package by.overone.library.util.constant;
 
-public class BooksConstant {
+public class BookConstant {
     public static final String ID = "book_id";
     public static final String TITLE = "book_title";
     public static final String GENRE = "book_genre";
