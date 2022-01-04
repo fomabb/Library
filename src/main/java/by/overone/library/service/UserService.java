@@ -1,9 +1,7 @@
 package by.overone.library.service;
 
-import by.overone.library.dto.UserAllInfoDTO;
-import by.overone.library.dto.UserDataDTO;
-import by.overone.library.dto.UserDetailsDTO;
-import by.overone.library.dto.UserRegistrationDTO;
+import by.overone.library.dto.*;
+import by.overone.library.model.User;
 
 import java.util.List;
 
@@ -30,4 +28,6 @@ public interface UserService {
     void addUserDetails(UserDetailsDTO userDetailsDTO);
 
     UserDetailsDTO getUserDetailsById(long id);
+
+    void userUpdate(long id, UserUpdateDTO userUpdateDTO);
 }

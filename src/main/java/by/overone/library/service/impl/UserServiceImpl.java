@@ -1,10 +1,7 @@
 package by.overone.library.service.impl;
 
 import by.overone.library.dao.UserDAO;
-import by.overone.library.dto.UserAllInfoDTO;
-import by.overone.library.dto.UserDataDTO;
-import by.overone.library.dto.UserDetailsDTO;
-import by.overone.library.dto.UserRegistrationDTO;
+import by.overone.library.dto.*;
 import by.overone.library.model.Role;
 import by.overone.library.model.Status;
 import by.overone.library.model.User;
@@ -93,15 +90,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserAllInfoDTO getUserAllInfo(long id) {
+        userDAO.getUserAllInfo(id);
         UserAllInfoDTO userAllInfoDTO = new UserAllInfoDTO();
-        User user = userDAO.getUserAllInfo(id);
-        userAllInfoDTO.setUser_id(user.getUser_id());
-        userAllInfoDTO.setUser_login(userAllInfoDTO.getUser_login());
-        userAllInfoDTO.setUser_email(userAllInfoDTO.getUser_email());
-        userAllInfoDTO.setUser_role(userAllInfoDTO.getUser_role());
-        userAllInfoDTO.setUser_status(user.getUser_status());
-        userAllInfoDTO.setUser_details_name(userAllInfoDTO.getUser_details_name());
-        userAllInfoDTO.setUser_details_name(userAllInfoDTO.getUser_details_name());
+
         return null;
     }
 
@@ -140,6 +131,12 @@ public class UserServiceImpl implements UserService {
         userDetailsDTO.setUsers_user_id(userDetails.getUsers_user_id());
         System.out.println(userDetailsDTO.toString());
         return userDetailsDTO;
+    }
+
+    @Override
+    public void userUpdate(long id, UserUpdateDTO userUpdateDTO) {
+        getUserById(id);
+        userDAO.userUpdate(id, userUpdateDTO);
     }
 }
 

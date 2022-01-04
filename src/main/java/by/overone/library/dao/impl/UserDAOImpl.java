@@ -4,6 +4,7 @@ import by.overone.library.dao.UserDAO;
 import by.overone.library.dao.mapper.UserDetailsRowMapper;
 import by.overone.library.dao.mapper.UserRowMapper;
 import by.overone.library.dto.UserDetailsDTO;
+import by.overone.library.dto.UserUpdateDTO;
 import by.overone.library.model.User;
 import by.overone.library.model.UserDetails;
 import lombok.AllArgsConstructor;
@@ -41,7 +42,7 @@ public class UserDAOImpl implements UserDAO {
     private final static String ADD_USER_DETAILS_ID_SQL = "INSERT INTO user_details(users_user_id) VALUE(?)";
     private final static String GET_INFO_SQL = "SELECT * FROM users JOIN user_details ON user_id = users_user_id " +
             "WHERE user_id = ?";
-    private final static String UPDATE_USER_STATUS_SQL = "UPDATE user SET status =(?) WHERE id=(?)";
+    private final static String UPDATE_USER_STATUS_SQL = "UPDATE user SET user_login=?, user_email=? WHERE id=?";
     private final static String ADD_USER_DETAILS_SQL = "UPDATE user_details SET user_details_name=?, " +
             "user_details_surname=?, user_details_address=?, user_details_phonenumber=? WHERE users_user_id=?";
     private final static String DELETE_USER_SQL = "UPDATE users SET user_status='INACTIVE' WHERE user_id=?";
@@ -115,8 +116,9 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public void addUserDetails(UserDetailsDTO userDetailsDTO) {
-        jdbcTemplate.update(ADD_USER_DETAILS_SQL, userDetailsDTO.getUser_details_name(), userDetailsDTO.getUser_details_surname(),
-                userDetailsDTO.getUser_details_address(), userDetailsDTO.getUser_details_phonenumber(), userDetailsDTO.getUsers_user_id());
+        jdbcTemplate.update(ADD_USER_DETAILS_SQL, userDetailsDTO.getUser_details_name(),
+                userDetailsDTO.getUser_details_surname(), userDetailsDTO.getUser_details_address(),
+                userDetailsDTO.getUser_details_phonenumber(), userDetailsDTO.getUsers_user_id());
     }
 
     @Override
@@ -125,5 +127,10 @@ public class UserDAOImpl implements UserDAO {
         return jdbcTemplate.query(GET_USER_DETAILS_BY_ID, new Object[]{id}, new UserDetailsRowMapper()).stream()
                 .findAny()
                 .orElse(null);
+    }
+
+    @Override
+    public void userUpdate(long id, UserUpdateDTO userUpdateDTO) {
+        jdbcTemplate.update(UPDATE_USER_STATUS_SQL, userUpdateDTO.getLogin(), userUpdateDTO.getEmail(), id);
     }
 }

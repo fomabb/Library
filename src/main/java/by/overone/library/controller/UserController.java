@@ -3,6 +3,7 @@ package by.overone.library.controller;
 import by.overone.library.dto.UserDataDTO;
 import by.overone.library.dto.UserDetailsDTO;
 import by.overone.library.dto.UserRegistrationDTO;
+import by.overone.library.dto.UserUpdateDTO;
 import by.overone.library.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -64,12 +65,16 @@ public class UserController {
 
     @PostMapping("/addDetails")
     public void addUserDetails(@RequestBody UserDetailsDTO userDetailsDTO) {
-        System.out.println(userDetailsDTO.toString());
         userService.addUserDetails(userDetailsDTO);
     }
 
     @GetMapping("/getdetails")
     public UserDetailsDTO readUserDetailsById(@RequestParam long id) {
         return userService.getUserDetailsById(id);
+    }
+
+    @PostMapping("/update")
+    public void userUpdate(@RequestParam long id, @RequestBody UserUpdateDTO user) {
+        userService.userUpdate(id, user);
     }
 }
