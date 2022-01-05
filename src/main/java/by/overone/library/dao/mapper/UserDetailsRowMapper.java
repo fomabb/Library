@@ -7,7 +7,8 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserDetailsRowMapper implements RowMapper<UserDetailsDTO>{
+public class UserDetailsRowMapper implements RowMapper<UserDetailsDTO> {
+
     @Override
     public UserDetailsDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
         UserDetailsDTO userDetailsDTO = new UserDetailsDTO();

@@ -120,7 +120,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDetailsDTO getUserDetailsById(long id) {
-        System.out.println(2);
+        getUserById(id);
         UserDetailsDTO userDetailsDTO = new UserDetailsDTO();
         UserDetails userDetails = userDAO.getUserDetailsById(id);
         userDetailsDTO.setUsers_user_id(userDetails.getUsers_user_id());
@@ -129,7 +129,6 @@ public class UserServiceImpl implements UserService {
         userDetailsDTO.setUser_details_address(userDetails.getUser_details_address());
         userDetailsDTO.setUser_details_phonenumber(userDetails.getUser_details_phonenumber());
         userDetailsDTO.setUsers_user_id(userDetails.getUsers_user_id());
-        System.out.println(userDetailsDTO.toString());
         return userDetailsDTO;
     }
 

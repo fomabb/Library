@@ -27,8 +27,8 @@ public class UserController {
         return userService.getUserByStatus(status);
     }
 
-    @GetMapping("/id")
-    public UserDataDTO readUserById(@RequestParam long id) {
+    @GetMapping("/{id}")
+    public UserDataDTO readUserById(@PathVariable long id) {
         return userService.getUserById(id);
     }
 
@@ -73,8 +73,8 @@ public class UserController {
         return userService.getUserDetailsById(id);
     }
 
-    @PostMapping("/update")
-    public void userUpdate(@RequestParam long id, @RequestBody UserUpdateDTO user) {
+    @PutMapping("/{id}")
+    public void userUpdate(@PathVariable long id, @RequestBody UserUpdateDTO user) {
         userService.userUpdate(id, user);
     }
 }

@@ -11,5 +11,5 @@ public class UserConstant {
     public static final String SURNAME = "user_details_surname";
     public static final String ADDRESS = "user_details_address";
     public static final String PHONE = "user_details_phonenumber";
-    public static final String USER_DETAILS_ID = "user_users_id";
+    public static final String USER_DETAILS_ID = "users_user_id";
 }

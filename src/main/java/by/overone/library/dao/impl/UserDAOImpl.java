@@ -15,6 +15,7 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -42,7 +43,7 @@ public class UserDAOImpl implements UserDAO {
     private final static String ADD_USER_DETAILS_ID_SQL = "INSERT INTO user_details(users_user_id) VALUE(?)";
     private final static String GET_INFO_SQL = "SELECT * FROM users JOIN user_details ON user_id = users_user_id " +
             "WHERE user_id = ?";
-    private final static String UPDATE_USER_STATUS_SQL = "UPDATE user SET user_login=?, user_email=? WHERE id=?";
+    private final static String UPDATE_USER_STATUS_SQL = "UPDATE users SET user_login=?, user_email=? WHERE user_id=?";
     private final static String ADD_USER_DETAILS_SQL = "UPDATE user_details SET user_details_name=?, " +
             "user_details_surname=?, user_details_address=?, user_details_phonenumber=? WHERE users_user_id=?";
     private final static String DELETE_USER_SQL = "UPDATE users SET user_status='INACTIVE' WHERE user_id=?";
