@@ -1,5 +1,6 @@
 package by.overone.library.dto;
 
+import by.overone.library.model.Status;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,6 +8,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserUpdateDTO {
-    private String login;
+public class BookUpdateDTO {
+    private String status;
 }

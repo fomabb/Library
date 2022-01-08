@@ -1,7 +1,6 @@
 package by.overone.library.service;
 
 import by.overone.library.dto.*;
-import by.overone.library.model.User;
 
 import java.util.List;
 

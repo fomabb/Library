@@ -24,11 +24,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserDataDTO> getAllUsers() {
-        List<UserDataDTO> users = userDAO.getAllUser().stream()
+        return userDAO.getAllUser().stream()
                 .map(user -> new UserDataDTO(user.getUser_id(), user.getUser_login(), user.getUser_email(),
                         user.getUser_role(), user.getUser_status()))
                 .collect(Collectors.toList());
-        return users;
     }
 
     @Override
@@ -69,11 +68,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserDataDTO> getUserByStatus(String status) {
-        List<UserDataDTO> users = userDAO.getUserByStatus(status).stream()
+        return userDAO.getUserByStatus(status).stream()
                 .map(user -> new UserDataDTO(user.getUser_id(), user.getUser_login(), user.getUser_email(),
                         user.getUser_role(), user.getUser_status()))
                 .collect(Collectors.toList());
-        return users;
     }
 
     @Override
@@ -90,10 +88,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserAllInfoDTO getUserAllInfo(long id) {
-        userDAO.getUserAllInfo(id);
-        UserAllInfoDTO userAllInfoDTO = new UserAllInfoDTO();
-
-        return null;
+        UserAllInfoDTO userAllInfoDTO;
+        userAllInfoDTO = userDAO.getUserAllInfo(id);
+        return userAllInfoDTO;
     }
 
     @Override

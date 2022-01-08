@@ -3,11 +3,13 @@ package by.overone.library.dao.impl;
 import by.overone.library.dao.UserDAO;
 import by.overone.library.dao.mapper.UserDetailsRowMapper;
 import by.overone.library.dao.mapper.UserRowMapper;
+import by.overone.library.dto.UserAllInfoDTO;
 import by.overone.library.dto.UserDetailsDTO;
 import by.overone.library.dto.UserUpdateDTO;
 import by.overone.library.model.User;
 import by.overone.library.model.UserDetails;
 import lombok.AllArgsConstructor;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -15,7 +17,6 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -43,7 +44,7 @@ public class UserDAOImpl implements UserDAO {
     private final static String ADD_USER_DETAILS_ID_SQL = "INSERT INTO user_details(users_user_id) VALUE(?)";
     private final static String GET_INFO_SQL = "SELECT * FROM users JOIN user_details ON user_id = users_user_id " +
             "WHERE user_id = ?";
-    private final static String UPDATE_USER_STATUS_SQL = "UPDATE users SET user_login=?, user_email=? WHERE user_id=?";
+    private final static String UPDATE_USER_LOGIN_SQL = "UPDATE users SET user_login=? WHERE user_id=?";
     private final static String ADD_USER_DETAILS_SQL = "UPDATE user_details SET user_details_name=?, " +
             "user_details_surname=?, user_details_address=?, user_details_phonenumber=? WHERE users_user_id=?";
     private final static String DELETE_USER_SQL = "UPDATE users SET user_status='INACTIVE' WHERE user_id=?";
@@ -51,8 +52,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public List<User> getAllUser() {
-        List<User> users = jdbcTemplate.query(GET_ALL_USER_SQL, new UserRowMapper());
-        return users;
+        return jdbcTemplate.query(GET_ALL_USER_SQL, new UserRowMapper());
     }
 
     @Override
@@ -78,8 +78,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public List<User> getUserByStatus(String status) {
-        List<User> users = jdbcTemplate.query(GET_USER_BY_STATUS_SQL, new Object[]{status}, new UserRowMapper());
-        return users;
+        return jdbcTemplate.query(GET_USER_BY_STATUS_SQL, new Object[]{status}, new UserRowMapper());
     }
 
     @Override
@@ -90,10 +89,9 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public User getUserAllInfo(long id) {
-        return jdbcTemplate.query(GET_INFO_SQL, new Object[]{id}, new UserRowMapper()).stream()
-                .findAny()
-                .orElse(null);
+    public UserAllInfoDTO getUserAllInfo(long id) {
+        return jdbcTemplate.queryForObject(GET_INFO_SQL, new Object[]{id},
+                new BeanPropertyRowMapper<>(UserAllInfoDTO.class));
     }
 
     @Override
@@ -124,7 +122,6 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public UserDetails getUserDetailsById(long id) {
-        System.out.println(1);
         return jdbcTemplate.query(GET_USER_DETAILS_BY_ID, new Object[]{id}, new UserDetailsRowMapper()).stream()
                 .findAny()
                 .orElse(null);
@@ -132,6 +129,6 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public void userUpdate(long id, UserUpdateDTO userUpdateDTO) {
-        jdbcTemplate.update(UPDATE_USER_STATUS_SQL, userUpdateDTO.getLogin(), userUpdateDTO.getEmail(), id);
+        jdbcTemplate.update(UPDATE_USER_LOGIN_SQL, userUpdateDTO.getLogin(), id);
     }
 }
