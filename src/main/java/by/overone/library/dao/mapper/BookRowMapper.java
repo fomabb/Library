@@ -14,11 +14,11 @@ public class BookRowMapper implements RowMapper<Book> {
     @Override
     public Book mapRow(ResultSet rs, int rowNum) throws SQLException {
         Book book = new Book();
-        book.setIdBook(rs.getLong(BookConstant.ID));
-        book.setTitleBook(rs.getString(BookConstant.TITLE));
-        book.setGenreBook(Genre.valueOf(rs.getString(BookConstant.GENRE).toUpperCase(Locale.ROOT)));
-        book.setAuthor(rs.getString(BookConstant.AUTHOR));
-        book.setStatus(Status.valueOf(rs.getString(BookConstant.STATUS)));
+        book.setBook_id(rs.getLong(BookConstant.ID));
+        book.setBook_title(rs.getString(BookConstant.TITLE));
+        book.setBook_genre(rs.getString(BookConstant.GENRE));
+        book.setBook_author(rs.getString(BookConstant.AUTHOR));
+        book.setBook_status(Status.valueOf(rs.getString(BookConstant.STATUS)));
         return book;
     }
 }

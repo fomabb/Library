@@ -2,6 +2,7 @@ package by.overone.library.controller;
 
 import by.overone.library.dto.*;
 import by.overone.library.service.UserService;
+import by.overone.library.util.validation.exception.ValidateException;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,8 +30,8 @@ public class UserController {
         return userService.getUserById(id);
     }
 
-    @GetMapping("/login")
-    public UserDataDTO readUserByLogin(@RequestParam String login) {
+    @GetMapping("/login/{login}")
+    public UserDataDTO readUserByLogin(@PathVariable String login) {
         return userService.getUserByLogin(login);
     }
 
@@ -51,7 +52,7 @@ public class UserController {
     }
 
     @PostMapping("/add")
-    public void registrationUser(@RequestBody UserRegistrationDTO userRegistrationDTO) {
+    public void registrationUser(@RequestBody UserRegistrationDTO userRegistrationDTO) throws ValidateException {
        userService.addUser(userRegistrationDTO);
     }
 
@@ -75,7 +76,7 @@ public class UserController {
         userService.userUpdate(id, user);
     }
 
-    @GetMapping("{id}/info")
+    @GetMapping("/info/{id}")
     public UserAllInfoDTO readUserAllInfo(@PathVariable long id) {
         return userService.getUserAllInfo(id);
     }

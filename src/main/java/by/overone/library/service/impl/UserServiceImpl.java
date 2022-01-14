@@ -7,7 +7,10 @@ import by.overone.library.model.Status;
 import by.overone.library.model.User;
 import by.overone.library.model.UserDetails;
 import by.overone.library.service.UserService;
+import by.overone.library.util.validation.UserValidate;
+import by.overone.library.util.validation.exception.ValidateException;
 import lombok.AllArgsConstructor;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -94,12 +97,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void addUser(UserRegistrationDTO userRegistrationDTO) {
+    public void addUser(UserRegistrationDTO userRegistrationDTO) throws ValidateException {
+        UserValidate.validateRegistration(userRegistrationDTO);
         User user = new User();
         user.setUser_login(userRegistrationDTO.getLogin());
-        user.setUser_password(userRegistrationDTO.getPassword());
+        user.setUser_password(DigestUtils.md5Hex(userRegistrationDTO.getPassword()));
         user.setUser_email(userRegistrationDTO.getEmail());
-        user.setUser_role(Role.valueOf(Role.CUSTOMERS.toString().toUpperCase(Locale.ROOT)));
+        user.setUser_role(Role.valueOf(Role.READER.toString().toUpperCase(Locale.ROOT)));
         user.setUser_status(Status.valueOf(Status.ACTIVE.toString().toUpperCase(Locale.ROOT)));
         userDAO.addUser(user);
     }

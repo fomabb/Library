@@ -1,7 +1,7 @@
 package by.overone.library.controller;
 
+import by.overone.library.dto.BookAddDTO;
 import by.overone.library.dto.BookDataDTO;
-import by.overone.library.dto.BookUpdateDTO;
 import by.overone.library.service.BookService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -30,8 +30,18 @@ public class BookController {
         return bookService.getBookByStatus(status);
     }
 
-    @PutMapping("/{id}")
-    public void updateBookByStatus(@PathVariable long id, @RequestBody BookUpdateDTO book) {
-        bookService.updateBookByStatus(id, book);
+    @PutMapping("/status/{id}")
+    public void updateBookByStatus(@PathVariable long id) {
+        bookService.updateBookByStatus(id);
+    }
+
+    @PutMapping("/delete/{id}")
+    public void deleteBook(@PathVariable long id) {
+        bookService.deleteBook(id);
+    }
+
+    @PostMapping("/add")
+    public void addBook(@RequestBody BookAddDTO bookAddDTO) {
+        bookService.addBook(bookAddDTO);
     }
 }

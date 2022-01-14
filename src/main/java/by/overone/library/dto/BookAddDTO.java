@@ -1,5 +1,7 @@
-package by.overone.library.model;
+package by.overone.library.dto;
 
+import by.overone.library.model.Genre;
+import by.overone.library.model.Status;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,8 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Book {
-    private long book_id;
+public class BookAddDTO {
     private String book_title;
     private String book_genre;
     private String book_author;

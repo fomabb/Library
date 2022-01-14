@@ -1,6 +1,7 @@
 package by.overone.library.service;
 
 import by.overone.library.dto.*;
+import by.overone.library.util.validation.exception.ValidateException;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public interface UserService {
 
     UserAllInfoDTO getUserAllInfo(long id);
 
-    void addUser(UserRegistrationDTO userRegistrationDTO);
+    void addUser(UserRegistrationDTO userRegistrationDTO) throws ValidateException;
 
     void deleteUser(long user_id);
 

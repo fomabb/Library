@@ -30,12 +30,12 @@ public class UserDAOImpl implements UserDAO {
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     private final static String GET_ALL_USER_SQL = "SELECT * FROM users";
-    private final static String GET_USER_BY_STATUS_SQL = "SELECT * FROM users WHERE user_status = ?";
-    private final static String GET_USER_BY_ID_SQL = "SELECT * FROM users WHERE user_id = ?";
-    private final static String GET_USER_BY_LOGIN_SQL = "SELECT * FROM users WHERE user_login = ?";
+    private final static String GET_USER_BY_STATUS_SQL = "SELECT * FROM users WHERE user_status=?";
+    private final static String GET_USER_BY_ID_SQL = "SELECT * FROM users WHERE user_id=?";
+    private final static String GET_USER_BY_LOGIN_SQL = "SELECT * FROM users WHERE user_login=?";
     private final static String GET_USER_BY_EMAIL_SQL = "SELECT * FROM users WHERE user_email = ?";
-    private final static String GET_USER_BY_FULL_NAME = "SELECT * FROM users JOIN user_details ON user_id = " +
-            "users_user_id WHERE user_details_name = ? AND user_details_surname = ?";
+    private final static String GET_USER_BY_FULL_NAME = "SELECT * FROM users JOIN user_details ON user_id= " +
+            "users_user_id WHERE user_details_name = ? AND user_details_surname=?";
     private final static String ADD_USER_SQL = "INSERT INTO users(user_login, user_password, user_email, " +
             "user_role, user_status) VALUES(:user_login, :user_password, :user_email, :user_role, " +
             ":user_status)";
@@ -48,7 +48,6 @@ public class UserDAOImpl implements UserDAO {
     private final static String ADD_USER_DETAILS_SQL = "UPDATE user_details SET user_details_name=?, " +
             "user_details_surname=?, user_details_address=?, user_details_phonenumber=? WHERE users_user_id=?";
     private final static String DELETE_USER_SQL = "UPDATE users SET user_status='INACTIVE' WHERE user_id=?";
-    private final static String GET_ALL_BOOKS_SQL = "SELECT * FROM books WHERE ";
 
     @Override
     public List<User> getAllUser() {

@@ -35,6 +35,10 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-core:2.13.1'
 
     implementation 'org.modelmapper:modelmapper:2.4.5'
+
+    // https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator
+    implementation 'org.hibernate.validator:hibernate-validator:7.0.2.Final'
+
 }
 
 test {
