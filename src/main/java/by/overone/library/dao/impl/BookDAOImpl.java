@@ -5,15 +5,10 @@ import by.overone.library.dao.mapper.BookRowMapper;
 import by.overone.library.model.Book;
 import lombok.AllArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.jdbc.core.namedparam.SqlParameterSource;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Locale;
 
 @Repository
 @AllArgsConstructor
@@ -29,7 +24,7 @@ public class BookDAOImpl implements BookDAO {
     private final static String DELETE_BOOKS_SQL = "UPDATE books SET book_status= 'INACTIVE' WHERE book_id=?";
     //    private final static String ADD_BOOKS_BY_ID_SQL = "INSERT INTO(book_title, book_genre, book_author, book_status)" +
 //            "VALUES(:book_title, :book_genre, :book_author, :book_status)";
-    private final static String ADD_BOOKS_BY_ID_SQL = "INSERT INTO books VALUES(1,?,?,?,?)";
+    private final static String ADD_BOOKS_BY_ID_SQL = "INSERT INTO books VALUES(0,?,?,?,?)";
 
     @Override
     public List<Book> getAllBook() {
@@ -62,5 +57,6 @@ public class BookDAOImpl implements BookDAO {
     public void addBook(Book book) {
         jdbcTemplate.update(ADD_BOOKS_BY_ID_SQL, book.getBook_title(), book.getBook_genre(), book.getBook_author(),
                 book.getBook_status().toString());
+        System.out.println(book);
     }
 }

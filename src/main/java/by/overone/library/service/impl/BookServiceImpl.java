@@ -4,7 +4,6 @@ import by.overone.library.dao.BookDAO;
 import by.overone.library.dto.BookAddDTO;
 import by.overone.library.dto.BookDataDTO;
 import by.overone.library.model.Book;
-import by.overone.library.model.Genre;
 import by.overone.library.model.Status;
 import by.overone.library.service.BookService;
 import lombok.AllArgsConstructor;
@@ -68,5 +67,6 @@ public class BookServiceImpl implements BookService {
         book.setBook_author(bookAddDTO.getBook_author());
         book.setBook_status(Status.valueOf(Status.ACTIVE.toString().toUpperCase(Locale.ROOT)));
         bookDAO.addBook(book);
+        System.out.println(book);
     }
 }
