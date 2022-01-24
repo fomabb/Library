@@ -21,7 +21,7 @@ public interface UserService {
 //
 //    UserAllInfoDTO getUserAllInfo(long id);
 //
-//    void addUser(UserRegistrationDTO userRegistrationDTO) throws ValidateException;
+    void addUser(UserRegistrationDTO userRegistrationDTO);
 //
 //    void deleteUser(long user_id);
 //

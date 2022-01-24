@@ -27,6 +27,11 @@ public class UserDAOImpl implements UserDAO {
         return entityManager.createQuery(criteriaQuery).getResultList();
     }
 
+    @Override
+    public void addUser(User user) {
+        entityManager.persist(user);
+    }
+
 //    @Override
 //    public User getUserById(long id) {
 //        return jdbcTemplate.query(GET_USER_BY_ID_SQL, new Object[]{id}, new UserRowMapper()).stream()

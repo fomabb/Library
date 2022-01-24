@@ -24,7 +24,7 @@ public interface UserDAO {
 //
 //    UserAllInfoDTO getUserAllInfo(long id);
 //
-//    void addUser(User user);
+    void addUser(User user);
 //
 //    void deleteUser(long user_id);
 //

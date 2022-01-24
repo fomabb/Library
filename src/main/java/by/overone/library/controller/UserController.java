@@ -1,11 +1,10 @@
 package by.overone.library.controller;
 
 import by.overone.library.dto.UserDataDTO;
+import by.overone.library.dto.UserRegistrationDTO;
 import by.overone.library.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -52,10 +51,10 @@ public class UserController {
 //        return "Hello";
 //    }
 //
-//    @PostMapping("/add")
-//    public void registrationUser(@RequestBody UserRegistrationDTO userRegistrationDTO) throws ValidateException {
-//        userService.addUser(userRegistrationDTO);
-//    }
+    @PostMapping("/add")
+    public void registrationUser(@RequestBody UserRegistrationDTO userRegistrationDTO) {
+        userService.addUser(userRegistrationDTO);
+    }
 //
 //    @PostMapping("/delete")
 //    public void deleteUser(@RequestParam long user_id) {

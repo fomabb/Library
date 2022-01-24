@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-
 @Entity
 @Table(name = "users")
 @Data
@@ -32,4 +31,8 @@ public class User {
 
     @Enumerated(value = EnumType.STRING)
     private Status user_status;
+
+    @JoinColumn(name = "detail_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    private UserDetails userDetails;
 }

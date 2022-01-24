@@ -2,12 +2,20 @@ package by.overone.library.service.impl;
 
 import by.overone.library.dao.UserDAO;
 import by.overone.library.dto.UserDataDTO;
+import by.overone.library.dto.UserRegistrationDTO;
+import by.overone.library.model.Role;
+import by.overone.library.model.Status;
+import by.overone.library.model.User;
+import by.overone.library.model.UserDetails;
 import by.overone.library.service.UserService;
+import by.overone.library.util.validation.UserValidate;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 @Service
@@ -88,17 +96,17 @@ public class UserServiceImpl implements UserService {
 //        return userAllInfoDTO;
 //    }
 //
-//    @Override
-//    public void addUser(UserRegistrationDTO userRegistrationDTO) throws ValidateException {
-//        UserValidate.validateRegistration(userRegistrationDTO);
-//        User user = new User();
-//        user.setUser_login(userRegistrationDTO.getLogin());
-//        user.setUser_password(DigestUtils.md5Hex(userRegistrationDTO.getPassword()));
-//        user.setUser_email(userRegistrationDTO.getEmail());
-//        user.setUser_role(Role.valueOf(Role.READER.toString().toUpperCase(Locale.ROOT)));
-//        user.setUser_status(Status.valueOf(Status.ACTIVE.toString().toUpperCase(Locale.ROOT)));
-//        userDAO.addUser(user);
-//    }
+    @Override
+    public void addUser(UserRegistrationDTO userRegistrationDTO) {
+        User user = new User();
+        user.setUser_login(userRegistrationDTO.getLogin());
+        user.setUser_password(DigestUtils.md5Hex(userRegistrationDTO.getPassword()));
+        user.setUser_email(userRegistrationDTO.getEmail());
+        user.setUser_role(Role.READER);
+        user.setUser_status(Status.ACTIVE);
+        user.setUserDetails(new UserDetails());
+        userDAO.addUser(user);
+    }
 //
 //    @Override
 //    public void deleteUser(long user_id) {
