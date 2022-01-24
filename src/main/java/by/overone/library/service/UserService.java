@@ -15,7 +15,7 @@ public interface UserService {
 
     UserDataDTO getUserByEmail(String email);
 
-    List<UserDataDTO> getUserByStatus(String  status);
+    List<UserDataDTO> getUserByStatus(String status);
 
     UserDataDTO getUserByFullName(String name, String surname);
 
