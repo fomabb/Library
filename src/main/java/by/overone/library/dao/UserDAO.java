@@ -12,25 +12,25 @@ public interface UserDAO {
 
     List<User> getAllUser();
 
-    User getUserById(long id);
-
-    User getUserByLogin(String login);
-
-    User getUserByEmail(String email);
-
-    List<User> getUserByStatus(String status);
-
-    User getUserByFullName(String name, String surname);
-
-    UserAllInfoDTO getUserAllInfo(long id);
-
-    void addUser(User user);
-
-    void deleteUser(long user_id);
-
-    void addUserDetails(UserDetailsDTO userDetailsDTO);
-
-    UserDetails getUserDetailsById(long id);
-
-    void userUpdate(long id, UserUpdateDTO userUpdateDTO);
+//    User getUserById(long id);
+//
+//    User getUserByLogin(String login);
+//
+//    User getUserByEmail(String email);
+//
+//    List<User> getUserByStatus(String status);
+//
+//    User getUserByFullName(String name, String surname);
+//
+//    UserAllInfoDTO getUserAllInfo(long id);
+//
+//    void addUser(User user);
+//
+//    void deleteUser(long user_id);
+//
+//    void addUserDetails(UserDetailsDTO userDetailsDTO);
+//
+//    UserDetails getUserDetailsById(long id);
+//
+//    void userUpdate(long id, UserUpdateDTO userUpdateDTO);
 }
