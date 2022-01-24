@@ -2,7 +2,7 @@ package by.overone.library.dao.impl;
 
 import by.overone.library.dao.UserDAO;
 import by.overone.library.model.User;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -12,7 +12,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
 @Repository
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class UserDAOImpl implements UserDAO {
 
     @PersistenceContext

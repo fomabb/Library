@@ -3,7 +3,7 @@ package by.overone.library.service.impl;
 import by.overone.library.dao.UserDAO;
 import by.overone.library.dto.UserDataDTO;
 import by.overone.library.service.UserService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
     @Autowired

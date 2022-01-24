@@ -1,15 +1,16 @@
 package by.overone.library.controller;
 
-import by.overone.library.dto.*;
+import by.overone.library.dto.UserDataDTO;
 import by.overone.library.service.UserService;
-import by.overone.library.util.validation.exception.ValidateException;
-import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.*;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
-@AllArgsConstructor
+@RequiredArgsConstructor
 @RequestMapping("/api/users")
 public class UserController {
 
