@@ -1,21 +1,8 @@
 package by.overone.library.dao.impl;
 
 import by.overone.library.dao.UserDAO;
-import by.overone.library.dao.mapper.UserDetailsRowMapper;
-import by.overone.library.dao.mapper.UserRowMapper;
-import by.overone.library.dto.UserAllInfoDTO;
-import by.overone.library.dto.UserDetailsDTO;
-import by.overone.library.dto.UserUpdateDTO;
 import by.overone.library.model.User;
-import by.overone.library.model.UserDetails;
 import lombok.AllArgsConstructor;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.jdbc.core.namedparam.SqlParameterSource;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -27,30 +14,6 @@ import java.util.List;
 @Repository
 @AllArgsConstructor
 public class UserDAOImpl implements UserDAO {
-
-
-//    private final JdbcTemplate jdbcTemplate;
-//    private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-
-//    private final static String GET_ALL_USER_SQL = "SELECT * FROM users";
-//    private final static String GET_USER_BY_STATUS_SQL = "SELECT * FROM users WHERE user_status=?";
-//    private final static String GET_USER_BY_ID_SQL = "SELECT * FROM users WHERE user_id=?";
-//    private final static String GET_USER_BY_LOGIN_SQL = "SELECT * FROM users WHERE user_login=?";
-//    private final static String GET_USER_BY_EMAIL_SQL = "SELECT * FROM users WHERE user_email = ?";
-//    private final static String GET_USER_BY_FULL_NAME = "SELECT * FROM users JOIN user_details ON user_id= " +
-//            "users_user_id WHERE user_details_name = ? AND user_details_surname=?";
-//    private final static String ADD_USER_SQL = "INSERT INTO users(user_login, user_password, user_email, " +
-//            "user_role, user_status) VALUES(:user_login, :user_password, :user_email, :user_role, " +
-//            ":user_status)";
-//    private final static String REGISTRATION_USER_SQL = "INSERT INTO users VALUE(0, ?, ?, ?, ?, ?)";
-//    private final static String GET_USER_DETAILS_BY_ID = "SELECT * FROM user_details WHERE users_user_id = ?";
-//    private final static String ADD_USER_DETAILS_ID_SQL = "INSERT INTO user_details(users_user_id) VALUE(?)";
-//    private final static String GET_INFO_SQL = "SELECT * FROM users JOIN user_details ON user_id = users_user_id " +
-//            "WHERE user_id = ?";
-//    private final static String UPDATE_USER_LOGIN_SQL = "UPDATE users SET user_login=? WHERE user_id=?";
-//    private final static String ADD_USER_DETAILS_SQL = "UPDATE user_details SET user_details_name=?, " +
-//            "user_details_surname=?, user_details_address=?, user_details_phonenumber=? WHERE users_user_id=?";
-//    private final static String DELETE_USER_SQL = "UPDATE users SET user_status='INACTIVE' WHERE user_id=?";
 
     @PersistenceContext
     private EntityManager entityManager;
