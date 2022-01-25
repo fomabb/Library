@@ -20,6 +20,11 @@ public class UserController {
         return userService.getAllUsers();
     }
 
+    @PostMapping("/add")
+    public void registrationUser(@RequestBody UserRegistrationDTO userRegistrationDTO) {
+        userService.addUser(userRegistrationDTO);
+    }
+
 //    @GetMapping("/status")
 //    public List<UserDataDTO> readByStatus(@RequestParam String status) {
 //        return userService.getUserByStatus(status);
@@ -51,10 +56,7 @@ public class UserController {
 //        return "Hello";
 //    }
 //
-    @PostMapping("/add")
-    public void registrationUser(@RequestBody UserRegistrationDTO userRegistrationDTO) {
-        userService.addUser(userRegistrationDTO);
-    }
+//
 //
 //    @PostMapping("/delete")
 //    public void deleteUser(@RequestParam long user_id) {

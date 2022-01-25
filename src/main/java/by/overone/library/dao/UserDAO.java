@@ -12,6 +12,8 @@ public interface UserDAO {
 
     List<User> getAllUser();
 
+        void addUser(User user);
+
 //    User getUserById(long id);
 //
 //    User getUserByLogin(String login);
@@ -23,8 +25,6 @@ public interface UserDAO {
 //    User getUserByFullName(String name, String surname);
 //
 //    UserAllInfoDTO getUserAllInfo(long id);
-//
-    void addUser(User user);
 //
 //    void deleteUser(long user_id);
 //

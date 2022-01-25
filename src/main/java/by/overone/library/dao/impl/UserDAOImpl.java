@@ -3,6 +3,7 @@ package by.overone.library.dao.impl;
 import by.overone.library.dao.UserDAO;
 import by.overone.library.model.User;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -11,6 +12,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
+@Slf4j
 @Repository
 @RequiredArgsConstructor
 public class UserDAOImpl implements UserDAO {

@@ -9,6 +9,8 @@ public interface UserService {
 
     List<UserDataDTO> getAllUsers();
 
+    void addUser(UserRegistrationDTO userRegistrationDTO);
+
 //    UserDataDTO getUserById(long id);
 //
 //    UserDataDTO getUserByLogin(String login);
@@ -20,8 +22,6 @@ public interface UserService {
 //    UserDataDTO getUserByFullName(String name, String surname);
 //
 //    UserAllInfoDTO getUserAllInfo(long id);
-//
-    void addUser(UserRegistrationDTO userRegistrationDTO);
 //
 //    void deleteUser(long user_id);
 //

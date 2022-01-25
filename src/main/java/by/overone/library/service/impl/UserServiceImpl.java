@@ -33,6 +33,18 @@ public class UserServiceImpl implements UserService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public void addUser(UserRegistrationDTO userRegistrationDTO) {
+        User user = new User();
+        user.setUser_login(userRegistrationDTO.getLogin());
+        user.setUser_password(DigestUtils.md5Hex(userRegistrationDTO.getPassword()));
+        user.setUser_email(userRegistrationDTO.getEmail());
+        user.setUser_role(Role.READER);
+        user.setUser_status(Status.ACTIVE);
+        user.setUserDetails(new UserDetails());
+        userDAO.addUser(user);
+    }
+
 //    @Override
 //    public UserDataDTO getUserById(long id) {
 //        UserDataDTO userDataDTO = new UserDataDTO();
@@ -96,17 +108,6 @@ public class UserServiceImpl implements UserService {
 //        return userAllInfoDTO;
 //    }
 //
-    @Override
-    public void addUser(UserRegistrationDTO userRegistrationDTO) {
-        User user = new User();
-        user.setUser_login(userRegistrationDTO.getLogin());
-        user.setUser_password(DigestUtils.md5Hex(userRegistrationDTO.getPassword()));
-        user.setUser_email(userRegistrationDTO.getEmail());
-        user.setUser_role(Role.READER);
-        user.setUser_status(Status.ACTIVE);
-        user.setUserDetails(new UserDetails());
-        userDAO.addUser(user);
-    }
 //
 //    @Override
 //    public void deleteUser(long user_id) {
