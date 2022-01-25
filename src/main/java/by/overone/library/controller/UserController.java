@@ -20,10 +20,10 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @PostMapping("/add")
-    public void registrationUser(@RequestBody UserRegistrationDTO userRegistrationDTO) {
-        userService.addUser(userRegistrationDTO);
-    }
+//    @PostMapping("/add")
+//    public void registrationUser(@RequestBody UserRegistrationDTO userRegistrationDTO) {
+//        userService.addUser(userRegistrationDTO);
+//    }
 
 //    @GetMapping("/status")
 //    public List<UserDataDTO> readByStatus(@RequestParam String status) {

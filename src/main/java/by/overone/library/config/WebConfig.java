@@ -27,14 +27,15 @@ public class WebConfig implements WebMvcConfigurer {
     public DataSource dataSource() {
         HikariConfig config = new HikariConfig("/db.properties");
         System.out.println(config.getMinimumIdle());
+
         return new HikariDataSource(config);
     }
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean() {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean en = new LocalContainerEntityManagerFactoryBean();
         en.setDataSource(dataSource());
-        en.setPackagesToScan("by.overone.library");
+        en.setPackagesToScan("by.overone.library.model");
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         en.setJpaVendorAdapter(vendorAdapter);
@@ -55,7 +56,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Bean
     public PlatformTransactionManager transactionManager() {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(entityManagerFactoryBean().getObject());
+        transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
 
         return transactionManager;
     }
