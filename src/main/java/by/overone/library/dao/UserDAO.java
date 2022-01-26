@@ -12,7 +12,7 @@ public interface UserDAO {
 
     List<User> getAllUser();
 
-//        void addUser(User user);
+        void addUser(User user);
 
 //    User getUserById(long id);
 //

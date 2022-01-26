@@ -2,14 +2,24 @@ package by.overone.library.service.impl;
 
 import by.overone.library.dao.UserDAO;
 import by.overone.library.dto.UserDataDTO;
+import by.overone.library.dto.UserRegistrationDTO;
+import by.overone.library.model.Role;
+import by.overone.library.model.Status;
+import by.overone.library.model.User;
+import by.overone.library.model.UserDetails;
 import by.overone.library.service.UserService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
+@Transactional
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
@@ -19,23 +29,24 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserDataDTO> getAllUsers() {
+        log.info("Bla bla bla");
         return userDAO.getAllUser().stream()
                 .map(user -> new UserDataDTO(user.getUser_id(), user.getUser_login(), user.getUser_email(),
                         user.getUser_role(), user.getUser_status()))
                 .collect(Collectors.toList());
     }
 
-//    @Override
-//    public void addUser(UserRegistrationDTO userRegistrationDTO) {
-//        User user = new User();
-//        user.setUser_login(userRegistrationDTO.getLogin());
-//        user.setUser_password(DigestUtils.md5Hex(userRegistrationDTO.getPassword()));
-//        user.setUser_email(userRegistrationDTO.getEmail());
-//        user.setUser_role(Role.READER);
-//        user.setUser_status(Status.ACTIVE);
-//        user.setUserDetails(new UserDetails());
-//        userDAO.addUser(user);
-//    }
+    @Override
+    public void addUser(UserRegistrationDTO userRegistrationDTO) {
+        User user = new User();
+        user.setUser_login(userRegistrationDTO.getLogin());
+        user.setUser_password(DigestUtils.md5Hex(userRegistrationDTO.getPassword()));
+        user.setUser_email(userRegistrationDTO.getEmail());
+        user.setUser_role(Role.READER);
+        user.setUser_status(Status.ACTIVE);
+        user.setUserDetails(new UserDetails());
+        userDAO.addUser(user);
+    }
 
 //    @Override
 //    public UserDataDTO getUserById(long id) {

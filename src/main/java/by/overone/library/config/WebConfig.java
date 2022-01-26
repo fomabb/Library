@@ -46,7 +46,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     Properties additionalProperties() {
         Properties properties = new Properties();
-        properties.setProperty("hibernate.hb2ddl.auto", "update");
+        properties.setProperty("hibernate.hbm2ddl.auto", "update");
         properties.setProperty("hibernate.show_sql", "true");
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
 
@@ -60,4 +60,14 @@ public class WebConfig implements WebMvcConfigurer {
 
         return transactionManager;
     }
+
+//    @Bean
+//    public MessageSource messageSource() {
+//        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+//        messageSource.setBasename("message_source/messages");
+//        messageSource.setDefaultEncoding(StandardCharsets.UTF_8.name());
+//        messageSource.setDefaultLocale(Locale.ENGLISH);
+//        messageSource.setUseCodeAsDefaultMessage(true);
+//        return messageSource;
+//    }
 }

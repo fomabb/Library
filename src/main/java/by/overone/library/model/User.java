@@ -36,7 +36,7 @@ public class User {
     @Enumerated(value = EnumType.STRING)
     private Status user_status;
 
-//    @JoinColumn(name = "users_user_id")
-//    @OneToOne(cascade = CascadeType.ALL)
-//    private UserDetails userDetails;
+    @JoinColumn(name = "users_user_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    private UserDetails userDetails;
 }
