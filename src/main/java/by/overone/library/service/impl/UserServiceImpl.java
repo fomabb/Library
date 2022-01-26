@@ -2,20 +2,12 @@ package by.overone.library.service.impl;
 
 import by.overone.library.dao.UserDAO;
 import by.overone.library.dto.UserDataDTO;
-import by.overone.library.dto.UserRegistrationDTO;
-import by.overone.library.model.Role;
-import by.overone.library.model.Status;
-import by.overone.library.model.User;
-import by.overone.library.model.UserDetails;
 import by.overone.library.service.UserService;
-import by.overone.library.util.validation.UserValidate;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Locale;
 import java.util.stream.Collectors;
 
 @Service
