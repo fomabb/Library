@@ -24,7 +24,6 @@ import java.util.List;
 @AllArgsConstructor
 public class UserDAOImpl implements UserDAO {
 
-
     private final JdbcTemplate jdbcTemplate;
 
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;

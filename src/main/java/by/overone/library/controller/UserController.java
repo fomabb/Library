@@ -40,7 +40,7 @@ public class UserController {
         return userService.getUserByEmail(email);
     }
 
-    @GetMapping("/fullname")
+    @GetMapping("/fullName")
     public UserDataDTO readUserByFullName(@RequestParam String name, String surname) {
         return userService.getUserByFullName(name, surname);
     }
