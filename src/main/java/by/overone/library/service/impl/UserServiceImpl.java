@@ -37,11 +37,11 @@ public class UserServiceImpl implements UserService {
     public UserDataDTO getUserById(long id) {
         UserDataDTO userDataDTO = new UserDataDTO();
         User user = userDAO.getUserById(id);
-        userDataDTO.setId(user.getUser_id());
-        userDataDTO.setLogin(user.getUser_login());
-        userDataDTO.setEmail(user.getUser_email());
-        userDataDTO.setRole(user.getUser_role());
-        userDataDTO.setStatus(user.getUser_status());
+        userDataDTO.setUser_id(user.getUser_id());
+        userDataDTO.setUser_login(user.getUser_login());
+        userDataDTO.setUser_email(user.getUser_email());
+        userDataDTO.setUser_role(user.getUser_role());
+        userDataDTO.setUser_status(user.getUser_status());
         return userDataDTO;
     }
 
@@ -49,11 +49,11 @@ public class UserServiceImpl implements UserService {
     public UserDataDTO getUserByLogin(String login) {
         UserDataDTO userDataDTO = new UserDataDTO();
         User user = userDAO.getUserByLogin(login);
-        userDataDTO.setId(user.getUser_id());
-        userDataDTO.setLogin(user.getUser_login());
-        userDataDTO.setEmail(user.getUser_email());
-        userDataDTO.setRole(user.getUser_role());
-        userDataDTO.setStatus(user.getUser_status());
+        userDataDTO.setUser_id(user.getUser_id());
+        userDataDTO.setUser_login(user.getUser_login());
+        userDataDTO.setUser_email(user.getUser_email());
+        userDataDTO.setUser_role(user.getUser_role());
+        userDataDTO.setUser_status(user.getUser_status());
         return userDataDTO;
     }
 
@@ -61,11 +61,11 @@ public class UserServiceImpl implements UserService {
     public UserDataDTO getUserByEmail(String email) {
         UserDataDTO userDataDTO = new UserDataDTO();
         User user = userDAO.getUserByEmail(email);
-        userDataDTO.setId(user.getUser_id());
-        userDataDTO.setLogin(user.getUser_login());
-        userDataDTO.setEmail(user.getUser_email());
-        userDataDTO.setRole(user.getUser_role());
-        userDataDTO.setStatus(user.getUser_status());
+        userDataDTO.setUser_id(user.getUser_id());
+        userDataDTO.setUser_login(user.getUser_login());
+        userDataDTO.setUser_email(user.getUser_email());
+        userDataDTO.setUser_role(user.getUser_role());
+        userDataDTO.setUser_status(user.getUser_status());
         return userDataDTO;
     }
 
@@ -81,18 +81,27 @@ public class UserServiceImpl implements UserService {
     public UserDataDTO getUserByFullName(String name, String surname) {
         UserDataDTO userDataDTO = new UserDataDTO();
         User user = userDAO.getUserByFullName(name, surname);
-        userDataDTO.setId(user.getUser_id());
-        userDataDTO.setLogin(user.getUser_login());
-        userDataDTO.setEmail(user.getUser_email());
-        userDataDTO.setRole(user.getUser_role());
-        userDataDTO.setStatus(user.getUser_status());
+        userDataDTO.setUser_id(user.getUser_id());
+        userDataDTO.setUser_login(user.getUser_login());
+        userDataDTO.setUser_email(user.getUser_email());
+        userDataDTO.setUser_role(user.getUser_role());
+        userDataDTO.setUser_status(user.getUser_status());
         return userDataDTO;
     }
 
     @Override
     public UserAllInfoDTO getUserAllInfo(long id) {
-        UserAllInfoDTO userAllInfoDTO;
-        userAllInfoDTO = userDAO.getUserAllInfo(id);
+        UserAllInfoDTO userAllInfoDTO = new UserAllInfoDTO();
+        UserFullInfoDTO userFullInfoDTO = userDAO.getUserFullInfo(id);
+        userAllInfoDTO.setUser_id(userFullInfoDTO.getUser_id());
+        userAllInfoDTO.setUser_login(userFullInfoDTO.getUser_login());
+        userAllInfoDTO.setUser_email(userFullInfoDTO.getUser_email());
+        userAllInfoDTO.setUser_role(userFullInfoDTO.getUser_role());
+        userAllInfoDTO.setUser_status(userFullInfoDTO.getUser_status());
+        userAllInfoDTO.setUser_details_name(userFullInfoDTO.getUser_details_name());
+        userAllInfoDTO.setUser_details_surname(userFullInfoDTO.getUser_details_surname());
+        userAllInfoDTO.setUser_details_address(userFullInfoDTO.getUser_details_address());
+        userAllInfoDTO.setUser_details_phonenumber(userFullInfoDTO.getUser_details_phonenumber());
         return userAllInfoDTO;
     }
 
@@ -100,9 +109,9 @@ public class UserServiceImpl implements UserService {
     public void addUser(UserRegistrationDTO userRegistrationDTO) throws ValidateException {
         UserValidate.validateRegistration(userRegistrationDTO);
         User user = new User();
-        user.setUser_login(userRegistrationDTO.getLogin());
-        user.setUser_password(DigestUtils.md5Hex(userRegistrationDTO.getPassword()));
-        user.setUser_email(userRegistrationDTO.getEmail());
+        user.setUser_login(userRegistrationDTO.getUser_login());
+        user.setUser_password(DigestUtils.md5Hex(userRegistrationDTO.getUser_password()));
+        user.setUser_email(userRegistrationDTO.getUser_email());
         user.setUser_role(Role.valueOf(Role.READER.toString().toUpperCase(Locale.ROOT)));
         user.setUser_status(Status.valueOf(Status.ACTIVE.toString().toUpperCase(Locale.ROOT)));
         userDAO.addUser(user);

@@ -57,6 +57,5 @@ public class BookDAOImpl implements BookDAO {
     public void addBook(Book book) {
         jdbcTemplate.update(ADD_BOOKS_BY_ID_SQL, book.getBook_title(), book.getBook_genre(), book.getBook_author(),
                 book.getBook_status().toString());
-        System.out.println(book);
     }
 }

@@ -67,6 +67,6 @@ public class BookServiceImpl implements BookService {
         book.setBook_author(bookAddDTO.getBook_author());
         book.setBook_status(Status.valueOf(Status.ACTIVE.toString().toUpperCase(Locale.ROOT)));
         bookDAO.addBook(book);
-        System.out.println(book);
+
     }
 }

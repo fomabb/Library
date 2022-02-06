@@ -1,9 +1,6 @@
 package by.overone.library.dto;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,16 +10,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UserRegistrationDTO {
 
-    @NotEmpty(message = "The login must not be empty")
-    @Size(min = 2, max = 30, message = "Login must be between 2 and 30 characters")
-    private String login;
+    @Pattern(regexp = "^[\\w]{4,12}$")
+    private String user_login;
 
-    @NotEmpty(message = "Password cannot be empty")
-    @Size(min = 5, message = "Password is too simple")
-    @Min(value = 0, message = "Password cannot be negative")
-    private String password;
+    @Pattern(regexp = "[a-zA-Z0-9]{2,16}")
+    private String user_password;
 
-    @NotEmpty(message = "The email must not be empty")
-    @Email(message = "Email should be valid")
-    private String email;
+    @Pattern(regexp = "^[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z]{2,6}$")
+    private String user_email;
 }

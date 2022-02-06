@@ -1,14 +1,17 @@
 package by.overone.library.dao.impl;
 
 import by.overone.library.dao.UserDAO;
+import by.overone.library.dao.mapper.UserAllInfoMapper;
 import by.overone.library.dao.mapper.UserDetailsRowMapper;
 import by.overone.library.dao.mapper.UserRowMapper;
 import by.overone.library.dto.UserAllInfoDTO;
 import by.overone.library.dto.UserDetailsDTO;
+import by.overone.library.dto.UserFullInfoDTO;
 import by.overone.library.dto.UserUpdateDTO;
 import by.overone.library.model.User;
 import by.overone.library.model.UserDetails;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -20,6 +23,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Slf4j
 @Repository
 @AllArgsConstructor
 public class UserDAOImpl implements UserDAO {
@@ -43,7 +47,8 @@ public class UserDAOImpl implements UserDAO {
     private final static String ADD_USER_DETAILS_ID_SQL = "INSERT INTO user_details(users_user_id) VALUE(?)";
     private final static String GET_INFO_SQL = "SELECT * FROM users JOIN user_details ON user_id = users_user_id " +
             "WHERE user_id = ?";
-    private final static String UPDATE_USER_LOGIN_SQL = "UPDATE users SET user_login=? WHERE user_id=?";
+    private final static String UPDATE_USER_LOGIN_SQL = "UPDATE users SET user_login=?, user_password=?, user_email=? " +
+            "WHERE user_id=?";
     private final static String ADD_USER_DETAILS_SQL = "UPDATE user_details SET user_details_name=?, " +
             "user_details_surname=?, user_details_address=?, user_details_phonenumber=? WHERE users_user_id=?";
     private final static String DELETE_USER_SQL = "UPDATE users SET user_status='INACTIVE' WHERE user_id=?";
@@ -87,9 +92,10 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public UserAllInfoDTO getUserAllInfo(long id) {
-        return jdbcTemplate.queryForObject(GET_INFO_SQL, new Object[]{id},
-                new BeanPropertyRowMapper<>(UserAllInfoDTO.class));
+    public UserFullInfoDTO getUserFullInfo(long id) {
+        return jdbcTemplate.query(GET_INFO_SQL, new Object[]{id}, new UserAllInfoMapper()).stream()
+                .findAny()
+                .orElse(null);
     }
 
     @Override
@@ -127,6 +133,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public void userUpdate(long id, UserUpdateDTO userUpdateDTO) {
-        jdbcTemplate.update(UPDATE_USER_LOGIN_SQL, userUpdateDTO.getLogin(), id);
+        jdbcTemplate.update(UPDATE_USER_LOGIN_SQL, userUpdateDTO.getLogin(), userUpdateDTO.getPassword(),
+                userUpdateDTO.getEmail(), id);
     }
 }

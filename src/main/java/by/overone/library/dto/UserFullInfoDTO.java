@@ -9,10 +9,16 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDataDTO {
+public class UserFullInfoDTO {
     private long user_id;
     private String user_login;
+    private String user_password;
     private String user_email;
     private Role user_role;
     private Status user_status;
+    private String user_details_name;
+    private String user_details_surname;
+    private String user_details_address;
+    private String user_details_phonenumber;
+    private long users_user_id;
 }

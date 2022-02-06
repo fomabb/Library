@@ -14,7 +14,7 @@ public class UserValidate {
     private final static String ADDRESS_REGEX = "^[\\w]{5,50}$";
 
     public static boolean validateRegistration(UserRegistrationDTO user) throws ValidateException {
-        return validateLogin(user.getLogin()) && validateEmail(user.getEmail()) && validatePassword(user.getPassword());
+        return validateLogin(user.getUser_login()) && validateEmail(user.getUser_email()) && validatePassword(user.getUser_password());
     }
 
     public static boolean validateUserDetails(UserDetailsDTO user) throws ValidateException {

@@ -40,7 +40,7 @@ public class UserController {
         return userService.getUserByEmail(email);
     }
 
-    @GetMapping("/fullName")
+    @GetMapping("/fullname")
     public UserDataDTO readUserByFullName(@RequestParam String name, String surname) {
         return userService.getUserByFullName(name, surname);
     }
@@ -56,8 +56,8 @@ public class UserController {
        userService.addUser(userRegistrationDTO);
     }
 
-    @PostMapping("/delete")
-    public void deleteUser(@RequestParam long user_id) {
+    @PutMapping("/delete/{user_id}")
+    public void deleteUser(@PathVariable long user_id) {
         userService.deleteUser(user_id);
     }
 
@@ -66,8 +66,8 @@ public class UserController {
         userService.addUserDetails(userDetailsDTO);
     }
 
-    @GetMapping("/getdetails")
-    public UserDetailsDTO readUserDetailsById(@RequestParam long id) {
+    @GetMapping("/getdetails/{id}")
+    public UserDetailsDTO readUserDetailsById(@PathVariable long id) {
         return userService.getUserDetailsById(id);
     }
 
@@ -78,6 +78,7 @@ public class UserController {
 
     @GetMapping("/info/{id}")
     public UserAllInfoDTO readUserAllInfo(@PathVariable long id) {
+        System.out.println(1 + id);
         return userService.getUserAllInfo(id);
     }
 }

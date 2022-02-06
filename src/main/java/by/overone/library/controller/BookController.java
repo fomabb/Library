@@ -3,6 +3,7 @@ package by.overone.library.controller;
 import by.overone.library.dto.BookAddDTO;
 import by.overone.library.dto.BookDataDTO;
 import by.overone.library.service.BookService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,7 +42,7 @@ public class BookController {
     }
 
     @PostMapping("/add")
-    public void addBook(@RequestBody BookAddDTO bookAddDTO) {
+    public void addBook(@Valid @RequestBody BookAddDTO bookAddDTO) {
         bookService.addBook(bookAddDTO);
     }
 }

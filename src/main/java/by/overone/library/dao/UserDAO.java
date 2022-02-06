@@ -2,6 +2,7 @@ package by.overone.library.dao;
 
 import by.overone.library.dto.UserAllInfoDTO;
 import by.overone.library.dto.UserDetailsDTO;
+import by.overone.library.dto.UserFullInfoDTO;
 import by.overone.library.dto.UserUpdateDTO;
 import by.overone.library.model.User;
 import by.overone.library.model.UserDetails;
@@ -22,7 +23,7 @@ public interface UserDAO {
 
     User getUserByFullName(String name, String surname);
 
-    UserAllInfoDTO getUserAllInfo(long id);
+    UserFullInfoDTO getUserFullInfo(long id);
 
     void addUser(User user);
 
