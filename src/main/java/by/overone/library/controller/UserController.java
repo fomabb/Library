@@ -53,7 +53,7 @@ public class UserController {
 
     @PostMapping("/add")
     public void registrationUser(@RequestBody UserRegistrationDTO userRegistrationDTO) throws ValidateException {
-       userService.addUser(userRegistrationDTO);
+        userService.addUser(userRegistrationDTO);
     }
 
     @PutMapping("/delete/{user_id}")
