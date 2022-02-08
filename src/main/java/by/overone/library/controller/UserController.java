@@ -78,7 +78,11 @@ public class UserController {
 
     @GetMapping("/info/{id}")
     public UserAllInfoDTO readUserAllInfo(@PathVariable long id) {
-        System.out.println(1 + id);
         return userService.getUserAllInfo(id);
+    }
+
+    @PutMapping("/details/{id}")
+    public void userUpdateDetails(@PathVariable long id, @RequestBody UserUpdateDetailsDTO user) {
+        userService.userUpdateDetails(id, user);
     }
 }

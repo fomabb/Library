@@ -4,15 +4,14 @@ import by.overone.library.dao.UserDAO;
 import by.overone.library.dao.mapper.UserAllInfoMapper;
 import by.overone.library.dao.mapper.UserDetailsRowMapper;
 import by.overone.library.dao.mapper.UserRowMapper;
-import by.overone.library.dto.UserAllInfoDTO;
 import by.overone.library.dto.UserDetailsDTO;
 import by.overone.library.dto.UserFullInfoDTO;
 import by.overone.library.dto.UserUpdateDTO;
+import by.overone.library.dto.UserUpdateDetailsDTO;
 import by.overone.library.model.User;
 import by.overone.library.model.UserDetails;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -52,6 +51,8 @@ public class UserDAOImpl implements UserDAO {
     private final static String ADD_USER_DETAILS_SQL = "UPDATE user_details SET user_details_name=?, " +
             "user_details_surname=?, user_details_address=?, user_details_phonenumber=? WHERE users_user_id=?";
     private final static String DELETE_USER_SQL = "UPDATE users SET user_status='INACTIVE' WHERE user_id=?";
+    private final static String UPDATE_USER_DETAILS_SQL = "UPDATE user_details SET user_details_name=?, " +
+            "user_details_surname=?, user_details_address=?, user_details_phonenumber=? WHERE users_user_id=?";
 
     @Override
     public List<User> getAllUser() {
@@ -135,5 +136,12 @@ public class UserDAOImpl implements UserDAO {
     public void userUpdate(long id, UserUpdateDTO userUpdateDTO) {
         jdbcTemplate.update(UPDATE_USER_LOGIN_SQL, userUpdateDTO.getLogin(), userUpdateDTO.getPassword(),
                 userUpdateDTO.getEmail(), id);
+    }
+
+    @Override
+    public void userUpdateDetails(long id, UserUpdateDetailsDTO userUpdateDetailsDTO) {
+        jdbcTemplate.update(UPDATE_USER_DETAILS_SQL, userUpdateDetailsDTO.getUser_details_name(),
+                userUpdateDetailsDTO.getUser_details_surname(), userUpdateDetailsDTO.getUser_details_address(),
+                userUpdateDetailsDTO.getUser_details_phonenumber(), id);
     }
 }

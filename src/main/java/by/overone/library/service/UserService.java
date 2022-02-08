@@ -30,4 +30,6 @@ public interface UserService {
     UserDetailsDTO getUserDetailsById(long id);
 
     void userUpdate(long id, UserUpdateDTO userUpdateDTO);
+
+    void userUpdateDetails(long id, UserUpdateDetailsDTO userUpdateDetailsDTO);
 }
