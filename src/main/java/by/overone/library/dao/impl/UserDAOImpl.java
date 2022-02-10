@@ -4,10 +4,7 @@ import by.overone.library.dao.UserDAO;
 import by.overone.library.dao.mapper.UserAllInfoMapper;
 import by.overone.library.dao.mapper.UserDetailsRowMapper;
 import by.overone.library.dao.mapper.UserRowMapper;
-import by.overone.library.dto.UserDetailsDTO;
-import by.overone.library.dto.UserFullInfoDTO;
-import by.overone.library.dto.UserUpdateDTO;
-import by.overone.library.dto.UserUpdateDetailsDTO;
+import by.overone.library.dto.*;
 import by.overone.library.model.User;
 import by.overone.library.model.UserDetails;
 import lombok.AllArgsConstructor;
@@ -48,6 +45,7 @@ public class UserDAOImpl implements UserDAO {
             "WHERE user_id = ?";
     private final static String UPDATE_USER_LOGIN_SQL = "UPDATE users SET user_login=?, user_password=?, user_email=? " +
             "WHERE user_id=?";
+    private final static String UPDATE_USER_STATUS = "UPDATE users SET user_status='ACTIVE' WHERE user_id=?";
     private final static String ADD_USER_DETAILS_SQL = "UPDATE user_details SET user_details_name=?, " +
             "user_details_surname=?, user_details_address=?, user_details_phonenumber=? WHERE users_user_id=?";
     private final static String DELETE_USER_SQL = "UPDATE users SET user_status='INACTIVE' WHERE user_id=?";
@@ -143,5 +141,10 @@ public class UserDAOImpl implements UserDAO {
         jdbcTemplate.update(UPDATE_USER_DETAILS_SQL, userUpdateDetailsDTO.getUser_details_name(),
                 userUpdateDetailsDTO.getUser_details_surname(), userUpdateDetailsDTO.getUser_details_address(),
                 userUpdateDetailsDTO.getUser_details_phonenumber(), id);
+    }
+
+    @Override
+    public void userUpdateStatus(long id) {
+        jdbcTemplate.update(UPDATE_USER_STATUS, id);
     }
 }

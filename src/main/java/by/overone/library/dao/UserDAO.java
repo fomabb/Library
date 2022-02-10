@@ -33,4 +33,6 @@ public interface UserDAO {
     void userUpdate(long id, UserUpdateDTO userUpdateDTO);
 
     void userUpdateDetails(long id, UserUpdateDetailsDTO userUpdateDetailsDTO);
+
+    void userUpdateStatus(long id);
 }

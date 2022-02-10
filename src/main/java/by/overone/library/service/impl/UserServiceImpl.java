@@ -9,20 +9,20 @@ import by.overone.library.model.UserDetails;
 import by.overone.library.service.UserService;
 import by.overone.library.util.validation.UserValidate;
 import by.overone.library.util.validation.exception.ValidateException;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-    @Autowired
     private final UserDAO userDAO;
 
     @Override
@@ -152,6 +152,12 @@ public class UserServiceImpl implements UserService {
     public void userUpdateDetails(long id, UserUpdateDetailsDTO userUpdateDetailsDTO) {
         getUserById(id);
         userDAO.userUpdateDetails(id, userUpdateDetailsDTO);
+    }
+
+    @Override
+    public void userUpdateStatus(long id) {
+        getUserById(id);
+        userDAO.userUpdateStatus(id);
     }
 }
 

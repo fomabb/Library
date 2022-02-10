@@ -20,8 +20,8 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @GetMapping("/status")
-    public List<UserDataDTO> readByStatus(@RequestParam String status) {
+    @GetMapping("/status/{status}")
+    public List<UserDataDTO> readByStatus(@PathVariable String status) {
         return userService.getUserByStatus(status);
     }
 
@@ -84,5 +84,10 @@ public class UserController {
     @PutMapping("/details/{id}")
     public void userUpdateDetails(@PathVariable long id, @RequestBody UserUpdateDetailsDTO user) {
         userService.userUpdateDetails(id, user);
+    }
+
+    @PutMapping("/updatestatus/{id}")
+    public void userUpdateStatus(@PathVariable long id) {
+        userService.userUpdateStatus(id);
     }
 }

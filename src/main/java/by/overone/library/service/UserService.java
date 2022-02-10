@@ -15,7 +15,7 @@ public interface UserService {
 
     UserDataDTO getUserByEmail(String email);
 
-    List<UserDataDTO> getUserByStatus(String  status);
+    List<UserDataDTO> getUserByStatus(String status);
 
     UserDataDTO getUserByFullName(String name, String surname);
 
@@ -32,4 +32,6 @@ public interface UserService {
     void userUpdate(long id, UserUpdateDTO userUpdateDTO);
 
     void userUpdateDetails(long id, UserUpdateDetailsDTO userUpdateDetailsDTO);
+
+    void userUpdateStatus(long id);
 }
