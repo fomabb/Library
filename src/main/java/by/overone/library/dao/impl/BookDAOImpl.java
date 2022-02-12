@@ -2,6 +2,7 @@ package by.overone.library.dao.impl;
 
 import by.overone.library.dao.BookDAO;
 import by.overone.library.dao.mapper.BookRowMapper;
+import by.overone.library.dto.BookUpdateCountDTO;
 import by.overone.library.model.Book;
 import lombok.AllArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -22,9 +23,8 @@ public class BookDAOImpl implements BookDAO {
     private final static String GET_BOOKS_BY_STATUS_SQL = "SELECT * FROM books WHERE book_status=?";
     private final static String UPDATE_BOOKS_BY_STATUS_SQL = "UPDATE books SET book_status= 'ACTIVE' WHERE book_id=?";
     private final static String DELETE_BOOKS_SQL = "UPDATE books SET book_status= 'INACTIVE' WHERE book_id=?";
-    //    private final static String ADD_BOOKS_BY_ID_SQL = "INSERT INTO(book_title, book_genre, book_author, book_status)" +
-//            "VALUES(:book_title, :book_genre, :book_author, :book_status)";
-    private final static String ADD_BOOKS_BY_ID_SQL = "INSERT INTO books VALUES(0,?,?,?,?)";
+    private final static String ADD_BOOKS_BY_ID_SQL = "INSERT INTO books VALUES(0,?,?,?,?,?)";
+    private final static String UPDATE_BOOK_COUNT_SQL = "UPDATE books SET book_count=?, book_status=? WHERE book_id=?";
 
     @Override
     public List<Book> getAllBook() {
@@ -56,6 +56,12 @@ public class BookDAOImpl implements BookDAO {
     @Override
     public void addBook(Book book) {
         jdbcTemplate.update(ADD_BOOKS_BY_ID_SQL, book.getBook_title(), book.getBook_genre(), book.getBook_author(),
-                book.getBook_status().toString());
+                book.getBook_status().toString(), book.getBook_count());
+    }
+
+    @Override
+    public void updateBookCount(long id, BookUpdateCountDTO bookUpdateCountDTO) {
+        jdbcTemplate.update(UPDATE_BOOK_COUNT_SQL, bookUpdateCountDTO.getBook_count(), bookUpdateCountDTO.getBook_status().toString(), id);
+        System.out.println(bookUpdateCountDTO);
     }
 }

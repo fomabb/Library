@@ -2,6 +2,7 @@ package by.overone.library.controller;
 
 import by.overone.library.dto.BookAddDTO;
 import by.overone.library.dto.BookDataDTO;
+import by.overone.library.dto.BookUpdateCountDTO;
 import by.overone.library.service.BookService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -44,5 +45,11 @@ public class BookController {
     @PostMapping("/add")
     public void addBook(@Valid @RequestBody BookAddDTO bookAddDTO) {
         bookService.addBook(bookAddDTO);
+    }
+
+    @PutMapping("/count/{id}")
+    public void updateBookCount(@PathVariable long id, @RequestBody BookUpdateCountDTO book) {
+        bookService.updateBookCount(id, book);
+
     }
 }

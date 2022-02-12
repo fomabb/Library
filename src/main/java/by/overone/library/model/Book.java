@@ -13,4 +13,5 @@ public class Book {
     private String book_genre;
     private String book_author;
     private Status book_status;
+    private long book_count;
 }

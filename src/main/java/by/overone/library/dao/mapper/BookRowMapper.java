@@ -19,6 +19,7 @@ public class BookRowMapper implements RowMapper<Book> {
         book.setBook_genre(rs.getString(BookConstant.GENRE));
         book.setBook_author(rs.getString(BookConstant.AUTHOR));
         book.setBook_status(Status.valueOf(rs.getString(BookConstant.STATUS)));
+        book.setBook_count(rs.getLong(BookConstant.COUNT));
         return book;
     }
 }

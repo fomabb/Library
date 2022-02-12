@@ -19,4 +19,6 @@ public class BookAddDTO {
     private String book_author;
 
     private Status book_status;
+
+    private long book_count;
 }

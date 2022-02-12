@@ -145,6 +145,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void userUpdate(long id, UserUpdateDTO userUpdateDTO) {
         getUserById(id);
+        userUpdateDTO.setPassword(DigestUtils.md5Hex(userUpdateDTO.getPassword()));
         userDAO.userUpdate(id, userUpdateDTO);
     }
 

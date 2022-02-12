@@ -8,11 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BookDataDTO {
-    private long idBook;
-    private String titleBook;
-    private String genreBook;
-    private String author;
-    private Status status;
+public class BookUpdateCountDTO {
     private long book_count;
+    private Status book_status;
 }

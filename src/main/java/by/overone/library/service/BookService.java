@@ -2,6 +2,7 @@ package by.overone.library.service;
 
 import by.overone.library.dto.BookAddDTO;
 import by.overone.library.dto.BookDataDTO;
+import by.overone.library.dto.BookUpdateCountDTO;
 
 import java.util.List;
 
@@ -18,4 +19,6 @@ public interface BookService {
     void deleteBook(long id);
 
     void addBook(BookAddDTO bookAddDTO);
+
+    void updateBookCount(long id, BookUpdateCountDTO bookUpdateCountDTO);
 }
