@@ -61,7 +61,7 @@ public class BookDAOImpl implements BookDAO {
 
     @Override
     public void updateBookCount(long id, BookUpdateCountDTO bookUpdateCountDTO) {
-        jdbcTemplate.update(UPDATE_BOOK_COUNT_SQL, bookUpdateCountDTO.getBook_count(), bookUpdateCountDTO.getBook_status().toString(), id);
-        System.out.println(bookUpdateCountDTO);
+        jdbcTemplate.update(UPDATE_BOOK_COUNT_SQL, bookUpdateCountDTO.getBook_count(),
+                bookUpdateCountDTO.getBook_status().toString(), id);
     }
 }
