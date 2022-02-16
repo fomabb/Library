@@ -1,17 +1,38 @@
 package by.overone.library.controller;
 
+import by.overone.library.dto.CardDTO;
+import by.overone.library.model.Card;
+import by.overone.library.service.CardService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/card")
 public class CardController {
 
+    private final CardService cardService;
+
     @GetMapping
-    public String read(){
+    public String read() {
         return "Hello new table";
+    }
+
+    @PostMapping
+    public void cardAdd(@Validated @RequestBody CardDTO cardDTO) {
+        cardService.cardAdd(cardDTO);
+    }
+
+    @GetMapping
+    public List<Card> cards(@Validated @RequestBody CardDTO cardDTO) {
+        return cardService.getAllCard(cardDTO);
+    }
+
+    @PutMapping
+    public void cardDelivery(@Validated @RequestBody CardDTO cardDTO) {
+        cardService.cardDelivery(cardDTO);
     }
 }

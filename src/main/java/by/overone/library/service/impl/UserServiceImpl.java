@@ -7,8 +7,6 @@ import by.overone.library.model.Status;
 import by.overone.library.model.User;
 import by.overone.library.model.UserDetails;
 import by.overone.library.service.UserService;
-import by.overone.library.util.validation.UserValidate;
-import by.overone.library.util.validation.exception.ValidateException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -106,8 +104,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void addUser(UserRegistrationDTO userRegistrationDTO) throws ValidateException {
-        UserValidate.validateRegistration(userRegistrationDTO);
+    public void addUser(UserRegistrationDTO userRegistrationDTO) {
         User user = new User();
         user.setUser_login(userRegistrationDTO.getUser_login());
         user.setUser_password(DigestUtils.md5Hex(userRegistrationDTO.getUser_password()));

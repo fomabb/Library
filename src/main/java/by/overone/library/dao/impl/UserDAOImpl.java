@@ -4,7 +4,10 @@ import by.overone.library.dao.UserDAO;
 import by.overone.library.dao.mapper.UserAllInfoMapper;
 import by.overone.library.dao.mapper.UserDetailsRowMapper;
 import by.overone.library.dao.mapper.UserRowMapper;
-import by.overone.library.dto.*;
+import by.overone.library.dto.UserDetailsDTO;
+import by.overone.library.dto.UserFullInfoDTO;
+import by.overone.library.dto.UserUpdateDTO;
+import by.overone.library.dto.UserUpdateDetailsDTO;
 import by.overone.library.model.User;
 import by.overone.library.model.UserDetails;
 import lombok.AllArgsConstructor;
@@ -16,7 +19,6 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -39,7 +41,6 @@ public class UserDAOImpl implements UserDAO {
     private final static String ADD_USER_SQL = "INSERT INTO users(user_login, user_password, user_email, " +
             "user_role, user_status) VALUES(:user_login, :user_password, :user_email, :user_role, " +
             ":user_status)";
-    private final static String REGISTRATION_USER_SQL = "INSERT INTO users VALUE(0, ?, ?, ?, ?, ?)";
     private final static String GET_USER_DETAILS_BY_ID = "SELECT * FROM user_details WHERE users_user_id = ?";
     private final static String ADD_USER_DETAILS_ID_SQL = "INSERT INTO user_details(users_user_id) VALUE(?)";
     private final static String GET_INFO_SQL = "SELECT * FROM users JOIN user_details ON user_id = users_user_id " +
