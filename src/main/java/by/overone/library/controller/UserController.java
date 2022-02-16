@@ -2,7 +2,6 @@ package by.overone.library.controller;
 
 import by.overone.library.dto.*;
 import by.overone.library.service.UserService;
-import by.overone.library.util.validation.exception.ValidateException;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -56,7 +55,7 @@ public class UserController {
     }
 
     @PostMapping("/add")
-    public void registrationUser(@RequestBody UserRegistrationDTO userRegistrationDTO) {
+    public void registrationUser(@Valid @RequestBody UserRegistrationDTO userRegistrationDTO) {
         userService.addUser(userRegistrationDTO);
     }
 

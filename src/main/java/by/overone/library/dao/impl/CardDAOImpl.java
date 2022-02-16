@@ -32,6 +32,13 @@ public class CardDAOImpl implements CardDAO {
         return jdbcTemplate.query(GET_CARD_SQL, new CardRowMapper());
     }
 
+
+    @Override
+    public void cardDelivery(Card card) {
+        jdbcTemplate.update(DELIVERY_CARD_SQL, card.getDelivery_date(), card.getUsers_user_id(),
+                card.getBooks_book_id());
+    }
+
 //    @Override
 //    public List<Card> getAllCard(CardDTO cardDTO) {
 //        String sql = "SELECT * FROM card ";
@@ -47,10 +54,4 @@ public class CardDAOImpl implements CardDAO {
 //        }
 //        return jdbcTemplate.query(sql, new Object[]{}, new CardRowMapper());
 //    }
-
-    @Override
-    public void cardDelivery(Card card) {
-        jdbcTemplate.update(DELIVERY_CARD_SQL, card.getDelivery_date(), card.getUsers_user_id(),
-                card.getBooks_book_id());
-    }
 }

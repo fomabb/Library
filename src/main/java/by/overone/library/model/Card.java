@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 public class Card {
 
     private long users_user_id;
+
     private long books_book_id;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
