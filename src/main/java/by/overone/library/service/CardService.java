@@ -12,4 +12,6 @@ public interface CardService {
     List<Card> getAllCard();
 
     void cardDelivery(CardDTO cardDTO);
+
+    List<CardDTO> getCardById(long id);
 }

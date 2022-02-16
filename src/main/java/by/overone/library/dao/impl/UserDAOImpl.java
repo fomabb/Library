@@ -100,7 +100,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void addUser(User user) {
+    public void addUser(User user) { // Транзакшенал на уровне сервиса
         KeyHolder keyHolder = new GeneratedKeyHolder();
         SqlParameterSource parameterSource = new MapSqlParameterSource()
                 .addValue("user_login", user.getUser_login())

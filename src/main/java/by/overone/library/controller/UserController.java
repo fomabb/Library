@@ -2,7 +2,6 @@ package by.overone.library.controller;
 
 import by.overone.library.dto.*;
 import by.overone.library.service.UserService;
-//import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -81,7 +80,7 @@ public class UserController {
         userService.userUpdate(id, user);
     }
 
-    @GetMapping("/info/{id}")
+    @GetMapping("{id}/info")
     public UserAllInfoDTO readUserAllInfo(@PathVariable long id) {
         return userService.getUserAllInfo(id);
     }

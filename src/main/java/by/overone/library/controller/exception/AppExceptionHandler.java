@@ -1,6 +1,6 @@
 package by.overone.library.controller.exception;
 
-import by.overone.library.Exception.EntityNotFoundException;
+import by.overone.library.exception.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.TypeMismatchException;

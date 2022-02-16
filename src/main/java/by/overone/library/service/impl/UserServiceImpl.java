@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Locale;
@@ -103,6 +104,7 @@ public class UserServiceImpl implements UserService {
         return userAllInfoDTO;
     }
 
+    @Transactional
     @Override
     public void addUser(UserRegistrationDTO userRegistrationDTO) {
         User user = new User();

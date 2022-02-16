@@ -1,4 +1,4 @@
-package by.overone.library.Exception;
+package by.overone.library.exception;
 
 public enum ExceptionCode {
     NOT_EXISTING_USER("4000"),

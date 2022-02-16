@@ -42,4 +42,9 @@ public class CardServiceImpl implements CardService {
         card.setDelivery_date(LocalDateTime.now());
         cardDAO.cardDelivery(card);
     }
+
+    @Override
+    public List<CardDTO> getCardById(long id) {
+        return cardDAO.getCardById(id);
+    }
 }

@@ -1,5 +1,6 @@
 package by.overone.library.dao;
 
+import by.overone.library.dto.CardDTO;
 import by.overone.library.model.Card;
 
 import java.util.List;
@@ -11,4 +12,6 @@ public interface CardDAO {
     List<Card> getAllCard();
 
     void cardDelivery(Card card);
+
+    List<CardDTO> getCardById(long id);
 }
