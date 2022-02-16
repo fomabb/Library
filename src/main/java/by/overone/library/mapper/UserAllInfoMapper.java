@@ -1,4 +1,4 @@
-package by.overone.library.dao.mapper;
+package by.overone.library.mapper;
 
 import by.overone.library.dto.UserFullInfoDTO;
 import by.overone.library.model.Role;

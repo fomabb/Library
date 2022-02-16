@@ -1,4 +1,4 @@
-package by.overone.library.dao.mapper;
+package by.overone.library.mapper;
 
 import by.overone.library.dto.UserDetailsDTO;
 import by.overone.library.util.constant.UserConstant;

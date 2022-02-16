@@ -1,14 +1,12 @@
-package by.overone.library.dao.mapper;
+package by.overone.library.mapper;
 
 import by.overone.library.model.Book;
-import by.overone.library.model.Genre;
 import by.overone.library.model.Status;
 import by.overone.library.util.constant.BookConstant;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Locale;
 
 public class BookRowMapper implements RowMapper<Book> {
     @Override

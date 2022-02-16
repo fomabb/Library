@@ -1,7 +1,6 @@
 package by.overone.library.service.impl;
 
 import by.overone.library.dao.CardDAO;
-import by.overone.library.dao.mapper.CardRowMapper;
 import by.overone.library.dto.CardDTO;
 import by.overone.library.model.Card;
 import by.overone.library.service.CardService;
@@ -30,19 +29,8 @@ public class CardServiceImpl implements CardService {
     }
 
     @Override
-    public List<Card> getAllCard(CardDTO cardDTO) {
-        String sql = "SELECT * FROM card";
-        if (cardDTO.getUsers_user_id() != 0 && cardDTO.getBooks_book_id() != 0) {
-            sql = sql + "WHERE users_user_id=" + cardDTO.getUsers_user_id() + "AND books_book_id="
-                    + cardDTO.getBooks_book_id();
-        }
-        if (cardDTO.getUsers_user_id() != 0 && cardDTO.getBooks_book_id() == 0) {
-            sql = sql + "WHERE users_user_id=" + cardDTO.getUsers_user_id();
-        }
-        if (cardDTO.getUsers_user_id() == 0 && cardDTO.getBooks_book_id() != 0) {
-            sql = sql + "WHERE books_book_id=" + cardDTO.getBooks_book_id();
-        }
-        return cardDAO.getAllCard(sql, new Object[]{}, new CardRowMapper(Card.class));
+    public List<Card> getAllCard() {
+        return cardDAO.getAllCard();
     }
 
     @Override
@@ -52,7 +40,6 @@ public class CardServiceImpl implements CardService {
         card.setBooks_book_id(cardDTO.getBooks_book_id());
         card.setDate_of_receiving(null);
         card.setDelivery_date(LocalDateTime.now());
-        System.out.println(card.toString());
         cardDAO.cardDelivery(card);
     }
 }

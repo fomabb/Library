@@ -1,9 +1,9 @@
 package by.overone.library.dao.impl;
 
 import by.overone.library.dao.UserDAO;
-import by.overone.library.dao.mapper.UserAllInfoMapper;
-import by.overone.library.dao.mapper.UserDetailsRowMapper;
-import by.overone.library.dao.mapper.UserRowMapper;
+import by.overone.library.mapper.UserAllInfoMapper;
+import by.overone.library.mapper.UserDetailsRowMapper;
+import by.overone.library.mapper.UserRowMapper;
 import by.overone.library.dto.UserDetailsDTO;
 import by.overone.library.dto.UserFullInfoDTO;
 import by.overone.library.dto.UserUpdateDTO;

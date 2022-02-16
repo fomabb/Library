@@ -16,19 +16,14 @@ public class CardController {
 
     private final CardService cardService;
 
-    @GetMapping
-    public String read() {
-        return "Hello new table";
-    }
-
     @PostMapping
     public void cardAdd(@Validated @RequestBody CardDTO cardDTO) {
         cardService.cardAdd(cardDTO);
     }
 
     @GetMapping
-    public List<Card> cards(@Validated @RequestBody CardDTO cardDTO) {
-        return cardService.getAllCard(cardDTO);
+    public List<Card> cards() {
+        return cardService.getAllCard();
     }
 
     @PutMapping

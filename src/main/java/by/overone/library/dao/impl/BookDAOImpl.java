@@ -1,7 +1,7 @@
 package by.overone.library.dao.impl;
 
 import by.overone.library.dao.BookDAO;
-import by.overone.library.dao.mapper.BookRowMapper;
+import by.overone.library.mapper.BookRowMapper;
 import by.overone.library.dto.BookUpdateCountDTO;
 import by.overone.library.model.Book;
 import lombok.AllArgsConstructor;
