@@ -1,28 +1,32 @@
 package by.overone.library.dto;
 
 import by.overone.library.model.UserDetails;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDetailsDTO extends UserDetails {
 
-    @NotEmpty(message = "The name must not be empty")
-    @Size(min = 2, max = 15, message = "name must be between 2 and 15 characters")
+    @NotEmpty
+    @Pattern(regexp = "^[a-zA-Z]{2,30}$")
     private String user_details_name;
 
-    @NotEmpty(message = "The surname must not be empty")
+    @NotEmpty
+    @Pattern(regexp = "^[a-zA-Z]{2,30}$")
     private String user_details_surname;
 
-
+    @NotEmpty
+    @Pattern(regexp = "^[\\w]{5,50}$")
     private String user_details_address;
 
-
+    @NotEmpty
+    @Pattern(regexp = "^(\\+375|29)(17|29|33|44)(\\d){7}$")
     private String user_details_phonenumber;
 
 

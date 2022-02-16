@@ -1,9 +1,11 @@
 package by.overone.library.dto;
 
-import jakarta.validation.constraints.Min;
+//import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.validation.constraints.Min;
 
 @Data
 @AllArgsConstructor

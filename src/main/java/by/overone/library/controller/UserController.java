@@ -2,12 +2,14 @@ package by.overone.library.controller;
 
 import by.overone.library.dto.*;
 import by.overone.library.service.UserService;
-import jakarta.validation.Valid;
+//import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Validated
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/users")
@@ -55,17 +57,17 @@ public class UserController {
     }
 
     @PostMapping("/add")
-    public void registrationUser(@Valid @RequestBody UserRegistrationDTO userRegistrationDTO) {
+    public void registrationUser(@Validated @RequestBody UserRegistrationDTO userRegistrationDTO) {
         userService.addUser(userRegistrationDTO);
     }
 
     @PutMapping("/delete/{user_id}")
-    public void deleteUser(@PathVariable long user_id) {
+    public void deleteUser(@Validated @PathVariable long user_id) {
         userService.deleteUser(user_id);
     }
 
-    @PostMapping("/addDetails")
-    public void addUserDetails(@RequestBody UserDetailsDTO userDetailsDTO) {
+    @PutMapping("/addDetails")
+    public void addUserDetails(@Validated @RequestBody UserDetailsDTO userDetailsDTO) {
         userService.addUserDetails(userDetailsDTO);
     }
 
@@ -75,7 +77,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public void userUpdate(@PathVariable long id, @RequestBody UserUpdateDTO user) {
+    public void userUpdate(@Validated @PathVariable long id, @RequestBody UserUpdateDTO user) {
         userService.userUpdate(id, user);
     }
 
@@ -85,12 +87,12 @@ public class UserController {
     }
 
     @PutMapping("/details/{id}")
-    public void userUpdateDetails(@PathVariable long id, @RequestBody UserUpdateDetailsDTO user) {
+    public void userUpdateDetails(@Validated @PathVariable long id, @RequestBody UserUpdateDetailsDTO user) {
         userService.userUpdateDetails(id, user);
     }
 
     @PutMapping("/updatestatus/{id}")
-    public void userUpdateStatus(@PathVariable long id) {
+    public void userUpdateStatus(@Validated @PathVariable long id) {
         userService.userUpdateStatus(id);
     }
 }

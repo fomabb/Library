@@ -4,12 +4,13 @@ import by.overone.library.dto.BookAddDTO;
 import by.overone.library.dto.BookDataDTO;
 import by.overone.library.dto.BookUpdateCountDTO;
 import by.overone.library.service.BookService;
-import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Validated
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/books")
@@ -38,17 +39,17 @@ public class BookController {
     }
 
     @PutMapping("/delete/{id}")
-    public void deleteBook(@PathVariable long id) {
+    public void deleteBook(@Validated @PathVariable long id) {
         bookService.deleteBook(id);
     }
 
     @PostMapping("/add")
-    public void addBook(@Valid @RequestBody BookAddDTO bookAddDTO) {
+    public void addBook(@Validated @RequestBody BookAddDTO bookAddDTO) {
         bookService.addBook(bookAddDTO);
     }
 
     @PutMapping("/count/{id}")
-    public void updateBookCount(@PathVariable long id, @RequestBody BookUpdateCountDTO book) {
+    public void updateBookCount(@Validated @PathVariable long id, @RequestBody BookUpdateCountDTO book) {
         bookService.updateBookCount(id, book);
 
     }

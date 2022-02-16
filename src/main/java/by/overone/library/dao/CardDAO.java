@@ -11,5 +11,4 @@ public interface CardDAO {
     List<Card> getAllCard();
 
     void cardDelivery(Card card);
-
 }
