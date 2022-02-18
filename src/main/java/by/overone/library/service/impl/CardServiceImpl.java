@@ -1,5 +1,6 @@
 package by.overone.library.service.impl;
 
+import by.overone.library.dao.BookDAO;
 import by.overone.library.dao.CardDAO;
 import by.overone.library.dto.CardDTO;
 import by.overone.library.model.Card;
@@ -17,6 +18,7 @@ import java.util.List;
 public class CardServiceImpl implements CardService {
 
     private final CardDAO cardDAO;
+    private final BookDAO bookDAO;
 
     @Override
     public void cardAdd(CardDTO cardAddDTO) {
@@ -29,11 +31,6 @@ public class CardServiceImpl implements CardService {
     }
 
     @Override
-    public List<Card> getAllCard() {
-        return cardDAO.getAllCard();
-    }
-
-    @Override
     public void cardDelivery(CardDTO cardDTO) {
         Card card = new Card();
         card.setUsers_user_id(cardDTO.getUsers_user_id());
@@ -41,6 +38,11 @@ public class CardServiceImpl implements CardService {
         card.setDate_of_receiving(null);
         card.setDelivery_date(LocalDateTime.now());
         cardDAO.cardDelivery(card);
+    }
+
+    @Override
+    public List<Card> getAllCard() {
+        return cardDAO.getAllCard();
     }
 
     @Override

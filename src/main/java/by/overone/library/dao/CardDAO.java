@@ -9,9 +9,9 @@ public interface CardDAO {
 
     void cardAdd(Card card);
 
-    List<Card> getAllCard();
-
     void cardDelivery(Card card);
+
+    List<Card> getAllCard();
 
     List<CardDTO> getCardById(long id);
 }

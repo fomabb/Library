@@ -9,9 +9,9 @@ public interface CardService {
 
     void cardAdd(CardDTO cardAddDTO);
 
-    List<Card> getAllCard();
-
     void cardDelivery(CardDTO cardDTO);
+
+    List<Card> getAllCard();
 
     List<CardDTO> getCardById(long id);
 }
