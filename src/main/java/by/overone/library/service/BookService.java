@@ -10,6 +10,8 @@ public interface BookService {
 
     List<BookDataDTO> getAllBook();
 
+    BookDataDTO getBookByIdActive(long id);
+
     BookDataDTO getBookById(long id);
 
     List<BookDataDTO> getBookByStatus(String status);
@@ -21,4 +23,6 @@ public interface BookService {
     void addBook(BookAddDTO bookAddDTO);
 
     void updateBookCount(long id, BookUpdateCountDTO bookUpdateCountDTO);
+
+    BookDataDTO getBookIdInactive(long id);
 }

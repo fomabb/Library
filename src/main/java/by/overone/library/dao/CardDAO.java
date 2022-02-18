@@ -14,4 +14,6 @@ public interface CardDAO {
     List<Card> getAllCard();
 
     List<CardDTO> getCardById(long id);
+
+    List<CardDTO> getCardDelivery(long id);
 }

@@ -25,7 +25,7 @@ public class BookController {
 
     @GetMapping("/{id}")
     public BookDataDTO readBookById(@PathVariable long id) {
-        return bookService.getBookById(id);
+        return bookService.getBookByIdActive(id);
     }
 
     @GetMapping("/status/{status}")
@@ -43,7 +43,7 @@ public class BookController {
         bookService.deleteBook(id);
     }
 
-    @PostMapping("/add")
+    @PostMapping
     public void addBook(@Validated @RequestBody BookAddDTO bookAddDTO) {
         bookService.addBook(bookAddDTO);
     }

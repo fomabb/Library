@@ -21,6 +21,7 @@ public class CardDAOImpl implements CardDAO {
     private final String GET_CARD_SQL = "SELECT * FROM card";
     private final String DELIVERY_CARD_SQL = "UPDATE card SET delivery_date=? WHERE users_user_id=? AND books_book_id=?";
     private final String GET_BY_ID_SQL = "SELECT * FROM card WHERE users_user_id=?";
+    private final String GET_CARD_FOR_DELIVERY_NULL = "SELECT * FROM card WHERE books_book_id=? AND delivery_date IS NULL";
 
     private final JdbcTemplate jdbcTemplate;
 
@@ -31,21 +32,26 @@ public class CardDAOImpl implements CardDAO {
     }
 
     @Override
-    public List<Card> getAllCard() {
-        return jdbcTemplate.query(GET_CARD_SQL, new CardRowMapper());
-    }
-
-
-    @Override
     public void cardDelivery(Card card) {
         jdbcTemplate.update(DELIVERY_CARD_SQL, card.getDelivery_date(), card.getUsers_user_id(),
                 card.getBooks_book_id());
     }
 
     @Override
+    public List<Card> getAllCard() {
+        return jdbcTemplate.query(GET_CARD_SQL, new CardRowMapper());
+    }
+
+    @Override
     public List<CardDTO> getCardById(long id) {
         return jdbcTemplate.query(GET_BY_ID_SQL, new Object[]{id}, new BeanPropertyRowMapper<>(CardDTO.class));
     }
+
+    @Override
+    public List<CardDTO> getCardDelivery(long id) {
+        return jdbcTemplate.query(GET_CARD_FOR_DELIVERY_NULL, new Object[]{id}, new BeanPropertyRowMapper<>(CardDTO.class));
+    }
+}
 
 //    @Override
 //    public List<Card> getAllCard(CardDTO cardDTO) {
@@ -62,4 +68,4 @@ public class CardDAOImpl implements CardDAO {
 //        }
 //        return jdbcTemplate.query(sql, new Object[]{}, new CardRowMapper());
 //    }
-}
+

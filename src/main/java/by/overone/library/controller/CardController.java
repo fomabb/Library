@@ -36,4 +36,9 @@ public class CardController {
     public List<CardDTO> getCardById(@Validated @PathVariable long id) {
         return cardService.getCardById(id);
     }
+
+    @GetMapping("del/{id}")
+    public List<CardDTO> getCardDelivery(@PathVariable long id) {
+        return cardService.getCardDelivery(id);
+    }
 }

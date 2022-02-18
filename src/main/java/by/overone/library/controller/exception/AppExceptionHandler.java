@@ -49,7 +49,6 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 
-
     @ExceptionHandler(SQLException.class)
     public ResponseEntity<ExceptionResponse> sqlExceptionHandler(SQLException e, WebRequest request) {
         ExceptionResponse response = new ExceptionResponse();

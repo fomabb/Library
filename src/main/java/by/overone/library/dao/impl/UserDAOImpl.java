@@ -127,7 +127,8 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public UserDetails getUserDetailsById(long id) {
-        return jdbcTemplate.query(GET_USER_DETAILS_BY_ID, new Object[]{id}, new UserDetailsRowMapper()).stream()
+        return jdbcTemplate.query(GET_USER_DETAILS_BY_ID, new Object[]{id}, new UserDetailsRowMapper())
+                .stream()
                 .findAny()
                 .orElse(null);
     }

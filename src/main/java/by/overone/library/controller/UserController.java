@@ -55,7 +55,7 @@ public class UserController {
         return "Hello";
     }
 
-    @PostMapping("/add")
+    @PostMapping
     public void registrationUser(@Validated @RequestBody UserRegistrationDTO userRegistrationDTO) {
         userService.addUser(userRegistrationDTO);
     }

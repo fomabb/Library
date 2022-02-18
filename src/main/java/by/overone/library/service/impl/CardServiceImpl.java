@@ -2,12 +2,15 @@ package by.overone.library.service.impl;
 
 import by.overone.library.dao.BookDAO;
 import by.overone.library.dao.CardDAO;
+import by.overone.library.dto.BookDataDTO;
 import by.overone.library.dto.CardDTO;
 import by.overone.library.model.Card;
+import by.overone.library.service.BookService;
 import by.overone.library.service.CardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -19,7 +22,9 @@ public class CardServiceImpl implements CardService {
 
     private final CardDAO cardDAO;
     private final BookDAO bookDAO;
+    private final BookService bookService;
 
+    @Transactional
     @Override
     public void cardAdd(CardDTO cardAddDTO) {
         Card card = new Card();
@@ -28,8 +33,11 @@ public class CardServiceImpl implements CardService {
         card.setDate_of_receiving(LocalDateTime.now());
         card.setDelivery_date(null);
         cardDAO.cardAdd(card);
+        BookDataDTO book = bookService.getBookByIdActive(cardAddDTO.getBooks_book_id());
+        bookDAO.updateBookCounter(cardAddDTO.getBooks_book_id(), book.getBook_count() - 1);
     }
 
+    @Transactional
     @Override
     public void cardDelivery(CardDTO cardDTO) {
         Card card = new Card();
@@ -38,6 +46,8 @@ public class CardServiceImpl implements CardService {
         card.setDate_of_receiving(null);
         card.setDelivery_date(LocalDateTime.now());
         cardDAO.cardDelivery(card);
+        BookDataDTO book = bookService.getBookById(cardDTO.getBooks_book_id());
+        bookDAO.updateBookCounter(cardDTO.getBooks_book_id(), book.getBook_count() + 1);
     }
 
     @Override
@@ -48,5 +58,10 @@ public class CardServiceImpl implements CardService {
     @Override
     public List<CardDTO> getCardById(long id) {
         return cardDAO.getCardById(id);
+    }
+
+    @Override
+    public List<CardDTO> getCardDelivery(long id) {
+        return cardDAO.getCardDelivery(id);
     }
 }
