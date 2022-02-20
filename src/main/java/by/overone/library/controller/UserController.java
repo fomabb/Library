@@ -19,8 +19,6 @@ public class UserController {
     @GetMapping
     public List<UserDataDTO> readAll(@RequestParam(required = false) String name, @RequestParam(required = false)
             String surname) {
-        System.out.println(name);
-        System.out.println(surname);
         return userService.getAllUsers();
     }
 

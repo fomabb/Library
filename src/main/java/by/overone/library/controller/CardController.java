@@ -22,15 +22,16 @@ public class CardController {
         cardService.cardAdd(cardDTO);
     }
 
+    @PutMapping
+    public void cardDelivery(@Validated @RequestBody CardDTO cardDTO) {
+        cardService.cardDelivery(cardDTO);
+    }
+
     @GetMapping
     public List<Card> cards() {
         return cardService.getAllCard();
     }
 
-    @PutMapping
-    public void cardDelivery(@Validated @RequestBody CardDTO cardDTO) {
-        cardService.cardDelivery(cardDTO);
-    }
 
     @GetMapping("/{id}")
     public List<CardDTO> getCardById(@Validated @PathVariable long id) {
