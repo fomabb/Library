@@ -1,10 +1,9 @@
 package by.overone.library.dao.impl;
 
 import by.overone.library.dao.BookDAO;
-import by.overone.library.mapper.BookRowMapper;
 import by.overone.library.dto.BookUpdateCountDTO;
+import by.overone.library.mapper.BookRowMapper;
 import by.overone.library.model.Book;
-import by.overone.library.model.Card;
 import by.overone.library.model.Status;
 import lombok.AllArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
