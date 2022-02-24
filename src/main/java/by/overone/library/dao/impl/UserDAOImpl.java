@@ -21,6 +21,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Repository
@@ -149,5 +150,10 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public void userUpdateStatus(long id) {
         jdbcTemplate.update(UPDATE_USER_STATUS, id);
+    }
+
+    @Override
+    public List<User> getUser(String login, String email, String status) {
+        return null;
     }
 }

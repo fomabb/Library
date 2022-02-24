@@ -159,5 +159,10 @@ public class UserServiceImpl implements UserService {
         getUserById(id);
         userDAO.userUpdateStatus(id);
     }
+
+    @Override
+    public List<UserDataDTO> getUser(String login, String email, String status) {
+        return null;
+    }
 }
 

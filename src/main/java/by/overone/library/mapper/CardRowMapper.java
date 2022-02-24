@@ -20,7 +20,7 @@ public class CardRowMapper implements RowMapper<Card> {
         card.setUsers_user_id(rs.getLong(CardConstant.ID_USER));
         card.setBooks_book_id(rs.getLong(CardConstant.ID_BOOKS));
         card.setDate_of_receiving(LocalDateTime.from(formatter.parse(rs.getString(CardConstant.RECEIVING))));
-        card.setDelivery_date(deliveryDate == null ? null :  LocalDateTime.from(formatter.parse(rs.getString
+        card.setDelivery_date(deliveryDate == null ? null : LocalDateTime.from(formatter.parse(rs.getString
                 (CardConstant.DELIVERY))));
         return card;
     }

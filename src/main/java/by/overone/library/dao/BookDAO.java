@@ -1,6 +1,5 @@
 package by.overone.library.dao;
 
-import by.overone.library.dto.BookDataDTO;
 import by.overone.library.dto.BookUpdateCountDTO;
 import by.overone.library.model.Book;
 

@@ -37,7 +37,7 @@ PUT | /api/books/count/{id} | update book_count and status
 GET | /api/books/ | get all books
 GET | /api/books/{id} | get book by id
 
-**2. API Description of general methods for Card**
+**3. API Description of general methods for Card**
 
 METHOD | PATH | DESCRIPTION
 ------------|-----|------------

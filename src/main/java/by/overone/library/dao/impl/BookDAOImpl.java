@@ -26,8 +26,8 @@ public class BookDAOImpl implements BookDAO {
     private final static String GET_BOOKS_BY_ID_INACTIVE_SQL = "SELECT * FROM books WHERE book_id=? AND book_status='INACTIVE'";
     private final static String GET_BOOKS_BY_ID_SQL = "SELECT * FROM books WHERE book_id=?";
     private final static String GET_BOOKS_BY_STATUS_SQL = "SELECT * FROM books WHERE book_status=?";
-    private final static String UPDATE_BOOKS_BY_STATUS_SQL = "UPDATE books SET book_status= 'ACTIVE' WHERE book_id=?";
-    private final static String DELETE_BOOKS_SQL = "UPDATE books SET book_status= 'INACTIVE' WHERE book_id=?";
+    private final static String UPDATE_BOOKS_BY_STATUS_SQL = "UPDATE books SET book_status='ACTIVE' WHERE book_id=?";
+    private final static String DELETE_BOOKS_SQL = "UPDATE books SET book_status='INACTIVE' WHERE book_id=?";
     private final static String ADD_BOOKS_BY_ID_SQL = "INSERT INTO books VALUES(0,?,?,?,?,?)";
     private final static String UPDATE_BOOK_COUNT_SQL = "UPDATE books SET book_count=?, book_status=? WHERE book_id=?";
 

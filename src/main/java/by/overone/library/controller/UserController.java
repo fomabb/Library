@@ -92,4 +92,11 @@ public class UserController {
     public void userUpdateStatus(@Validated @PathVariable long id) {
         userService.userUpdateStatus(id);
     }
+
+    @GetMapping
+    public List<UserDataDTO> getUser(@RequestParam(required = false) String login,
+                                     @RequestParam(required = false) String email,
+                                     @RequestParam(required = false) String status) {
+        return userService.getUser(login, email, status);
+    }
 }
