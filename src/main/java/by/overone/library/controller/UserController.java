@@ -93,10 +93,10 @@ public class UserController {
         userService.userUpdateStatus(id);
     }
 
-    @GetMapping
-    public List<UserDataDTO> getUser(@RequestParam(required = false) String login,
-                                     @RequestParam(required = false) String email,
-                                     @RequestParam(required = false) String status) {
-        return userService.getUser(login, email, status);
-    }
+//    @GetMapping
+//    public List<UserDataDTO> getUser(@RequestParam(required = false) String login,
+//                                     @RequestParam(required = false) String email,
+//                                     @RequestParam(required = false) String status) {
+//        return userService.getUser(login, email, status);
+//    }
 }

@@ -1,13 +1,13 @@
 package by.overone.library.dao.impl;
 
 import by.overone.library.dao.UserDAO;
-import by.overone.library.mapper.UserAllInfoMapper;
-import by.overone.library.mapper.UserDetailsRowMapper;
-import by.overone.library.mapper.UserRowMapper;
 import by.overone.library.dto.UserDetailsDTO;
 import by.overone.library.dto.UserFullInfoDTO;
 import by.overone.library.dto.UserUpdateDTO;
 import by.overone.library.dto.UserUpdateDetailsDTO;
+import by.overone.library.mapper.UserAllInfoMapper;
+import by.overone.library.mapper.UserDetailsRowMapper;
+import by.overone.library.mapper.UserRowMapper;
 import by.overone.library.model.User;
 import by.overone.library.model.UserDetails;
 import lombok.AllArgsConstructor;
@@ -21,7 +21,6 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @Repository
@@ -54,6 +53,7 @@ public class UserDAOImpl implements UserDAO {
     private final static String DELETE_USER_SQL = "UPDATE users SET user_status='INACTIVE' WHERE user_id=?";
     private final static String UPDATE_USER_DETAILS_SQL = "UPDATE user_details SET user_details_name=?, " +
             "user_details_surname=?, user_details_address=?, user_details_phonenumber=? WHERE users_user_id=?";
+    private final static String ADD_TEST_DETAILS = "INSERT INTO users VALUES(?,?,?,?,0)";
 
     @Override
     public List<User> getAllUser() {
@@ -125,6 +125,7 @@ public class UserDAOImpl implements UserDAO {
                 userDetailsDTO.getUser_details_surname(), userDetailsDTO.getUser_details_address(),
                 userDetailsDTO.getUser_details_phonenumber(), userDetailsDTO.getUsers_user_id());
     }
+
 
     @Override
     public UserDetails getUserDetailsById(long id) {

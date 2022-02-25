@@ -24,7 +24,10 @@ METHOD | PATH | DESCRIPTION
 ------------|-----|------------
 POST | /api/users | register new user
 PUT | /api/users/{id} | delete user by id for status
+PUT | /api/users/addDetails | add userDetails by id
+GET | /api//getdetails/{id} | get userDetails by id
 GET | /api/users/{id} | get user by id
+
 
 **2. API Description of general methods for Book**
 

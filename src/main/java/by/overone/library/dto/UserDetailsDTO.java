@@ -22,7 +22,7 @@ public class UserDetailsDTO extends UserDetails {
     private String user_details_surname;
 
     @NotEmpty
-    @Pattern(regexp = "^[\\w]{5,50}$")
+    @Pattern(regexp = "^[\\w]{2,50}$")
     private String user_details_address;
 
     @NotEmpty
