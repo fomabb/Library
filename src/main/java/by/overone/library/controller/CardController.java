@@ -42,4 +42,9 @@ public class CardController {
     public List<CardDTO> getCardDelivery(@PathVariable long id) {
         return cardService.getCardDelivery(id);
     }
+
+    @GetMapping("/null")
+    public List<CardDTO> getCardNull() {
+        return cardService.getCardNull();
+    }
 }

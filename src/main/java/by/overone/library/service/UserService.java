@@ -34,5 +34,5 @@ public interface UserService {
 
     void userUpdateStatus(long id);
 
-    List<UserDataDTO> getUser(String login, String email, String status);
+    List<UserDataAllDTO> getUser(String login, String email, String status);
 }

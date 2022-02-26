@@ -64,4 +64,9 @@ public class CardServiceImpl implements CardService {
     public List<CardDTO> getCardDelivery(long id) {
         return cardDAO.getCardDelivery(id);
     }
+
+    @Override
+    public List<CardDTO> getCardNull() {
+        return cardDAO.getCardNull();
+    }
 }

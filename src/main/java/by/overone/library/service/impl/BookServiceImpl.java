@@ -93,7 +93,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public void updateBookCount(long id, BookUpdateCountDTO bookUpdateCountDTO) {
-        getBookByIdActive(id);
+        getBookById(id);
         if (bookUpdateCountDTO.getBook_count() <= 0) {
             bookUpdateCountDTO.setBook_status(Status.valueOf(Status.INACTIVE.toString().toUpperCase(Locale.ROOT)));
         } else {

@@ -28,8 +28,8 @@ public class BookController {
         return bookService.getBookByIdActive(id);
     }
 
-    @GetMapping("/status/{status}")
-    public List<BookDataDTO> readBookByStatus(@PathVariable String status) {
+    @GetMapping("/status")
+    public List<BookDataDTO> readBookByStatus(@RequestParam String status) {
         return bookService.getBookByStatus(status);
     }
 

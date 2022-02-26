@@ -22,8 +22,8 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @GetMapping("/status/{status}")
-    public List<UserDataDTO> readByStatus(@PathVariable String status) {
+    @GetMapping("/status")
+    public List<UserDataDTO> readByStatus(@RequestParam String status) {
         return userService.getUserByStatus(status);
     }
 
@@ -32,8 +32,8 @@ public class UserController {
         return userService.getUserById(id);
     }
 
-    @GetMapping("/login/{login}")
-    public UserDataDTO readUserByLogin(@PathVariable String login) {
+    @GetMapping("/login")
+    public UserDataDTO readUserByLogin(@RequestParam String login) {
         return userService.getUserByLogin(login);
     }
 
@@ -93,10 +93,14 @@ public class UserController {
         userService.userUpdateStatus(id);
     }
 
-//    @GetMapping
-//    public List<UserDataDTO> getUser(@RequestParam(required = false) String login,
-//                                     @RequestParam(required = false) String email,
-//                                     @RequestParam(required = false) String status) {
-//        return userService.getUser(login, email, status);
-//    }
+    @GetMapping("/test")
+    public List<?> getUser(@RequestParam(required = false) String login,
+                           @RequestParam(required = false) String email,
+                           @RequestParam(required = false) String status) {
+        if (login.equals("") && email.equals("") && status.equals("")) {
+            return userService.getAllUsers();
+        } else {
+            return userService.getUser(login, email, status);
+        }
+    }
 }

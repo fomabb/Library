@@ -161,8 +161,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDataDTO> getUser(String login, String email, String status) {
-        return null;
+    public List<UserDataAllDTO> getUser(String login, String email, String status) {
+        return userDAO.getUser(login, email, status).stream()
+                .map(user -> new UserDataAllDTO(user.getUser_login(), user.getUser_email(), user.getUser_status()))
+                .collect(Collectors.toList());
     }
 }
+
 
