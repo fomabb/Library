@@ -22,7 +22,7 @@ public class CardDAOImpl implements CardDAO {
     private final String DELIVERY_CARD_SQL = "UPDATE card SET delivery_date=? WHERE users_user_id=? AND books_book_id=?";
     private final String GET_BY_ID_SQL = "SELECT * FROM card WHERE users_user_id=?";
     private final String GET_CARD_FOR_DELIVERY_IS_NULL = "SELECT * FROM card WHERE books_book_id=? AND delivery_date IS NULL";
-    private final String GET_CARD_FOR_DELIVERY_NULL = "SELECT * FROM card WHERE delivery_date=NULL";
+    private final String GET_CARD_FOR_DELIVERY_NULL = "SELECT * FROM card WHERE delivery_date IS NULL";
 
     private final JdbcTemplate jdbcTemplate;
 
