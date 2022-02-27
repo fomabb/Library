@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Repository
@@ -23,6 +24,7 @@ public class CardDAOImpl implements CardDAO {
     private final String GET_BY_ID_SQL = "SELECT * FROM card WHERE users_user_id=?";
     private final String GET_CARD_FOR_DELIVERY_IS_NULL = "SELECT * FROM card WHERE books_book_id=? AND delivery_date IS NULL";
     private final String GET_CARD_FOR_DELIVERY_NULL = "SELECT * FROM card WHERE delivery_date IS NULL";
+    private final String GET_CARD_RETURN_SQL = "SELECT * FROM card WHERE users_user_id=? AND books_book_id=?";
 
     private final JdbcTemplate jdbcTemplate;
 
@@ -56,6 +58,14 @@ public class CardDAOImpl implements CardDAO {
     @Override
     public List<CardDTO> getCardNull() {
         return jdbcTemplate.query(GET_CARD_FOR_DELIVERY_NULL, new BeanPropertyRowMapper<>(CardDTO.class));
+    }
+
+    @Override
+    public Optional<Card> getCardReturn(long user_id, long book_id) {
+        return jdbcTemplate.query(GET_CARD_RETURN_SQL, new Object[]{user_id, book_id},
+                new BeanPropertyRowMapper<>(Card.class))
+                .stream()
+                .findAny();
     }
 }
 
