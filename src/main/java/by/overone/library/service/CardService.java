@@ -1,21 +1,21 @@
 package by.overone.library.service;
 
-import by.overone.library.dto.CardDTO;
+import by.overone.library.dto.CardDataDTO;
 import by.overone.library.model.Card;
 
 import java.util.List;
 
 public interface CardService {
 
-    void cardAdd(CardDTO cardAddDTO);
+    void cardAdd(CardDataDTO cardAddDTO);
 
-    void cardDelivery(CardDTO cardDTO);
+    void cardDelivery(CardDataDTO cardDTO);
 
     List<Card> getAllCard();
 
-    List<CardDTO> getCardById(long id);
+    List<CardDataDTO> getCardById(long id);
 
-    List<CardDTO> getCardDelivery(long id);
+    List<CardDataDTO> getCardDelivery(long id);
 
-    List<CardDTO> getCardNull();
+    List<CardDataDTO> getCardNull();
 }

@@ -2,6 +2,8 @@ package by.overone.library.service.impl;
 
 import by.overone.library.dao.UserDAO;
 import by.overone.library.dto.*;
+import by.overone.library.exception.EntityNotFoundException;
+import by.overone.library.exception.ExceptionCode;
 import by.overone.library.model.Role;
 import by.overone.library.model.Status;
 import by.overone.library.model.User;
@@ -35,7 +37,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDataDTO getUserById(long id) {
         UserDataDTO userDataDTO = new UserDataDTO();
-        User user = userDAO.getUserById(id);
+        User user = userDAO.getUserById(id)
+                .orElseThrow(() -> new EntityNotFoundException(ExceptionCode.NOT_EXISTING_USER.getErrorCode()));
         userDataDTO.setUser_id(user.getUser_id());
         userDataDTO.setUser_login(user.getUser_login());
         userDataDTO.setUser_email(user.getUser_email());
@@ -47,7 +50,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDataDTO getUserByLogin(String login) {
         UserDataDTO userDataDTO = new UserDataDTO();
-        User user = userDAO.getUserByLogin(login);
+        User user = userDAO.getUserByLogin(login)
+                .orElseThrow(() -> new EntityNotFoundException(ExceptionCode.NOT_EXISTING_LOGIN.getErrorCode()));
         userDataDTO.setUser_id(user.getUser_id());
         userDataDTO.setUser_login(user.getUser_login());
         userDataDTO.setUser_email(user.getUser_email());
@@ -59,7 +63,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDataDTO getUserByEmail(String email) {
         UserDataDTO userDataDTO = new UserDataDTO();
-        User user = userDAO.getUserByEmail(email);
+        User user = userDAO.getUserByEmail(email)
+                .orElseThrow(() -> new EntityNotFoundException(ExceptionCode.NOT_EXISTING_EMAIL.getErrorCode()));
         userDataDTO.setUser_id(user.getUser_id());
         userDataDTO.setUser_login(user.getUser_login());
         userDataDTO.setUser_email(user.getUser_email());
@@ -79,7 +84,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDataDTO getUserByFullName(String name, String surname) {
         UserDataDTO userDataDTO = new UserDataDTO();
-        User user = userDAO.getUserByFullName(name, surname);
+        User user = userDAO.getUserByFullName(name, surname)
+                .orElseThrow(() -> new EntityNotFoundException(ExceptionCode.NOT_EXISTING_USER.getErrorCode()));
         userDataDTO.setUser_id(user.getUser_id());
         userDataDTO.setUser_login(user.getUser_login());
         userDataDTO.setUser_email(user.getUser_email());
@@ -131,7 +137,8 @@ public class UserServiceImpl implements UserService {
     public UserDetailsDTO getUserDetailsById(long id) {
         getUserById(id);
         UserDetailsDTO userDetailsDTO = new UserDetailsDTO();
-        UserDetails userDetails = userDAO.getUserDetailsById(id);
+        UserDetails userDetails = userDAO.getUserDetailsById(id)
+                .orElseThrow(() -> new EntityNotFoundException(ExceptionCode.NOT_EXISTING_USER.getErrorCode()));
         userDetailsDTO.setUsers_user_id(userDetails.getUsers_user_id());
         userDetailsDTO.setUser_details_name(userDetails.getUser_details_name());
         userDetailsDTO.setUser_details_surname(userDetails.getUser_details_surname());

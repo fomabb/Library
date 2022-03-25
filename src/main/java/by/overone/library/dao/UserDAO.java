@@ -8,20 +8,21 @@ import by.overone.library.model.User;
 import by.overone.library.model.UserDetails;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserDAO {
 
     List<User> getAllUser();
 
-    User getUserById(long id);
+    Optional<User> getUserById(long id);
 
-    User getUserByLogin(String login);
+    Optional<User> getUserByLogin(String login);
 
-    User getUserByEmail(String email);
+    Optional<User> getUserByEmail(String email);
 
     List<User> getUserByStatus(String status);
 
-    User getUserByFullName(String name, String surname);
+    Optional<User> getUserByFullName(String name, String surname);
 
     UserFullInfoDTO getUserFullInfo(long id);
 
@@ -31,7 +32,7 @@ public interface UserDAO {
 
     void addUserDetails(UserDetailsDTO userDetailsDTO);
 
-    UserDetails getUserDetailsById(long id);
+    Optional<UserDetailsDTO> getUserDetailsById(long id);
 
     void userUpdate(long id, UserUpdateDTO userUpdateDTO);
 

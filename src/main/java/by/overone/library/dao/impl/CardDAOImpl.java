@@ -1,7 +1,7 @@
 package by.overone.library.dao.impl;
 
 import by.overone.library.dao.CardDAO;
-import by.overone.library.dto.CardDTO;
+import by.overone.library.dto.CardDataDTO;
 import by.overone.library.mapper.CardRowMapper;
 import by.overone.library.model.Card;
 import lombok.RequiredArgsConstructor;
@@ -46,18 +46,18 @@ public class CardDAOImpl implements CardDAO {
     }
 
     @Override
-    public List<CardDTO> getCardById(long id) {
-        return jdbcTemplate.query(GET_BY_ID_SQL, new Object[]{id}, new BeanPropertyRowMapper<>(CardDTO.class));
+    public List<CardDataDTO> getCardById(long id) {
+        return jdbcTemplate.query(GET_BY_ID_SQL, new Object[]{id}, new BeanPropertyRowMapper<>(CardDataDTO.class));
     }
 
     @Override
-    public List<CardDTO> getCardDelivery(long id) {
-        return jdbcTemplate.query(GET_CARD_FOR_DELIVERY_IS_NULL, new Object[]{id}, new BeanPropertyRowMapper<>(CardDTO.class));
+    public List<CardDataDTO> getCardDelivery(long id) {
+        return jdbcTemplate.query(GET_CARD_FOR_DELIVERY_IS_NULL, new Object[]{id}, new BeanPropertyRowMapper<>(CardDataDTO.class));
     }
 
     @Override
-    public List<CardDTO> getCardNull() {
-        return jdbcTemplate.query(GET_CARD_FOR_DELIVERY_NULL, new BeanPropertyRowMapper<>(CardDTO.class));
+    public List<CardDataDTO> getCardNull() {
+        return jdbcTemplate.query(GET_CARD_FOR_DELIVERY_NULL, new BeanPropertyRowMapper<>(CardDataDTO.class));
     }
 
     @Override

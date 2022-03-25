@@ -1,6 +1,6 @@
 package by.overone.library.controller;
 
-import by.overone.library.dto.CardDTO;
+import by.overone.library.dto.CardDataDTO;
 import by.overone.library.model.Card;
 import by.overone.library.service.CardService;
 import lombok.AllArgsConstructor;
@@ -18,12 +18,12 @@ public class CardController {
     private final CardService cardService;
 
     @PostMapping
-    public void cardAdd(@Validated @RequestBody CardDTO cardDTO) {
+    public void cardAdd(@Validated @RequestBody CardDataDTO cardDTO) {
         cardService.cardAdd(cardDTO);
     }
 
     @PutMapping
-    public void cardDelivery(@Validated @RequestBody CardDTO cardDTO) {
+    public void cardDelivery(@Validated @RequestBody CardDataDTO cardDTO) {
         cardService.cardDelivery(cardDTO);
     }
 
@@ -34,17 +34,17 @@ public class CardController {
 
 
     @GetMapping("/{id}")
-    public List<CardDTO> getCardById(@Validated @PathVariable long id) {
+    public List<CardDataDTO> getCardById(@Validated @PathVariable long id) {
         return cardService.getCardById(id);
     }
 
     @GetMapping("del/{id}")
-    public List<CardDTO> getCardDelivery(@PathVariable long id) {
+    public List<CardDataDTO> getCardDelivery(@PathVariable long id) {
         return cardService.getCardDelivery(id);
     }
 
     @GetMapping("/null")
-    public List<CardDTO> getCardNull() {
+    public List<CardDataDTO> getCardNull() {
         return cardService.getCardNull();
     }
 }

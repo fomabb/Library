@@ -9,7 +9,7 @@ import javax.validation.constraints.Min;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CardDTO {
+public class CardDataDTO {
 
     @Min(1)
     private long users_user_id;

@@ -21,6 +21,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Repository
@@ -61,24 +62,21 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public User getUserById(long id) {
+    public Optional<User> getUserById(long id) {
         return jdbcTemplate.query(GET_USER_BY_ID_SQL, new Object[]{id}, new UserRowMapper()).stream()
-                .findAny()
-                .orElse(null);
+                .findAny();
     }
 
     @Override
-    public User getUserByLogin(String login) {
+    public Optional<User> getUserByLogin(String login) {
         return jdbcTemplate.query(GET_USER_BY_LOGIN_SQL, new Object[]{login}, new UserRowMapper()).stream()
-                .findAny()
-                .orElse(null);
+                .findAny();
     }
 
     @Override
-    public User getUserByEmail(String email) {
+    public Optional<User> getUserByEmail(String email) {
         return jdbcTemplate.query(GET_USER_BY_EMAIL_SQL, new Object[]{email}, new UserRowMapper()).stream()
-                .findAny()
-                .orElse(null);
+                .findAny();
     }
 
     @Override
@@ -87,10 +85,9 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public User getUserByFullName(String name, String surname) {
+    public Optional<User> getUserByFullName(String name, String surname) {
         return jdbcTemplate.query(GET_USER_BY_FULL_NAME, new Object[]{name, surname}, new UserRowMapper()).stream()
-                .findAny()
-                .orElse(null);
+                .findAny();
     }
 
     @Override
@@ -101,7 +98,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void addUser(User user) { // Транзакшенал на уровне сервиса +
+    public void addUser(User user) {
         KeyHolder keyHolder = new GeneratedKeyHolder();
         SqlParameterSource parameterSource = new MapSqlParameterSource()
                 .addValue("user_login", user.getUser_login())
@@ -128,11 +125,9 @@ public class UserDAOImpl implements UserDAO {
 
 
     @Override
-    public UserDetails getUserDetailsById(long id) {
-        return jdbcTemplate.query(GET_USER_DETAILS_BY_ID, new Object[]{id}, new UserDetailsRowMapper())
-                .stream()
-                .findAny()
-                .orElse(null);
+    public Optional<UserDetailsDTO> getUserDetailsById(long id) {
+        return jdbcTemplate.query(GET_USER_DETAILS_BY_ID, new Object[]{id}, new UserDetailsRowMapper()).stream()
+                .findAny();
     }
 
     @Override
