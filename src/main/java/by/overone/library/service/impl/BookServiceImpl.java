@@ -35,7 +35,8 @@ public class BookServiceImpl implements BookService {
     @Override
     public BookDataDTO getBookByIdActive(long id) {
         BookDataDTO bookDataDTO = new BookDataDTO();
-        Book book = bookDAO.getBookByIdActive(id).orElseThrow(() -> new EntityNotFoundException(ExceptionCode.NOT_EXISTING_BOOK.getErrorCode()));
+        Book book = bookDAO.getBookByIdActive(id)
+                .orElseThrow(() -> new EntityNotFoundException(ExceptionCode.NOT_EXISTING_BOOK.getErrorCode()));
         bookDataDTO.setIdBook(book.getBook_id());
         bookDataDTO.setTitleBook(book.getBook_title());
         bookDataDTO.setGenreBook(book.getBook_genre());
@@ -49,7 +50,8 @@ public class BookServiceImpl implements BookService {
     public BookDataDTO getBookById(long id) {
         log.info("Get book by id " + id + " service method started");
         BookDataDTO bookDataDTO = new BookDataDTO();
-        Book book = bookDAO.getBookById(id).orElseThrow(() -> new EntityNotFoundException(ExceptionCode.NOT_EXISTING_BOOK.getErrorCode()));
+        Book book = bookDAO.getBookById(id)
+                .orElseThrow(() -> new EntityNotFoundException(ExceptionCode.NOT_EXISTING_BOOK.getErrorCode()));
         bookDataDTO.setIdBook(book.getBook_id());
         bookDataDTO.setTitleBook(book.getBook_title());
         bookDataDTO.setGenreBook(book.getBook_genre());
@@ -105,7 +107,8 @@ public class BookServiceImpl implements BookService {
     @Override
     public BookDataDTO getBookIdInactive(long id) {
         BookDataDTO bookDataDTO = new BookDataDTO();
-        Book book = bookDAO.getBookByIdInactive(id).orElseThrow(() -> new EntityNotFoundException(ExceptionCode.NOT_EXISTING_BOOK.getErrorCode()));
+        Book book = bookDAO.getBookByIdInactive(id)
+                .orElseThrow(() -> new EntityNotFoundException(ExceptionCode.NOT_EXISTING_BOOK.getErrorCode()));
         bookDataDTO.setIdBook(book.getBook_id());
         bookDataDTO.setTitleBook(book.getBook_title());
         bookDataDTO.setGenreBook(book.getBook_genre());
