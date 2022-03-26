@@ -52,7 +52,8 @@ public class CardDAOImpl implements CardDAO {
 
     @Override
     public List<CardDataDTO> getCardDelivery(long id) {
-        return jdbcTemplate.query(GET_CARD_FOR_DELIVERY_IS_NULL, new Object[]{id}, new BeanPropertyRowMapper<>(CardDataDTO.class));
+        return jdbcTemplate.query(GET_CARD_FOR_DELIVERY_IS_NULL, new Object[]{id},
+                new BeanPropertyRowMapper<>(CardDataDTO.class));
     }
 
     @Override
@@ -63,7 +64,7 @@ public class CardDAOImpl implements CardDAO {
     @Override
     public Optional<Card> getCardReturn(long user_id, long book_id) {
         return jdbcTemplate.query(GET_CARD_RETURN_SQL, new Object[]{user_id, book_id},
-                new BeanPropertyRowMapper<>(Card.class))
+                        new BeanPropertyRowMapper<>(Card.class))
                 .stream()
                 .findAny();
     }

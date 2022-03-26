@@ -42,23 +42,30 @@ public class CardServiceImpl implements CardService {
     @Transactional
     @Override
     public void cardDelivery(CardDataDTO cardDTO) {
-        Card cardReturn = cardDAO.getCardReturn(cardDTO.getUsers_user_id(), cardDTO.getBooks_book_id())
+        Card card = cardDAO.getCardReturn(cardDTO.getUsers_user_id(), cardDTO.getBooks_book_id())
                 .orElseThrow(() -> new EntityNotFoundException(ExceptionCode.NOT_EXISTING_BOOK.getErrorCode()));
 
-//        if (cardReturn.getDelivery_date() == null) {
-//        log.info(cardReturn.toString());
+        String sql = "SELECT * FROM card WHERE delivery_date IS NULL";
 
-        cardReturn.setUsers_user_id(cardDTO.getUsers_user_id());
-        cardReturn.setBooks_book_id(cardDTO.getBooks_book_id());
-        cardReturn.setDate_of_receiving(null);
-        cardReturn.setDelivery_date(LocalDateTime.now());
-        cardDAO.cardDelivery(cardReturn);
-        log.info(cardReturn.toString());
+//        if () { // Implement a check for counter
+
+        log.info(card.toString());
+
+        card.setUsers_user_id(cardDTO.getUsers_user_id());
+        card.setBooks_book_id(cardDTO.getBooks_book_id());
+        card.setDate_of_receiving(null);
+        card.setDelivery_date(LocalDateTime.now());
+        cardDAO.cardDelivery(card);
+
+        log.info(card.toString());
+
         BookDataDTO book = bookService.getBookById(cardDTO.getBooks_book_id());
         bookDAO.updateBookCounter(cardDTO.getBooks_book_id(), book.getBook_count() + 1);
-//            log.info("1");
+
+            log.info("1");
+
 //        } else {
-//            throw new RuntimeException("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+//            throw new EntityNotFoundException(ExceptionCode.NOT_EXISTING_BOOK.getErrorCode());
 //        }
     }
 
