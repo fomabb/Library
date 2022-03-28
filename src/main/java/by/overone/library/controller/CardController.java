@@ -2,6 +2,7 @@ package by.overone.library.controller;
 
 import by.overone.library.dto.CardDataDTO;
 import by.overone.library.model.Card;
+import by.overone.library.model.CardNullDTO;
 import by.overone.library.service.CardService;
 import lombok.AllArgsConstructor;
 import org.springframework.validation.annotation.Validated;
@@ -44,7 +45,7 @@ public class CardController {
     }
 
     @GetMapping("/null")
-    public List<CardDataDTO> getCardNull() {
+    public List<CardNullDTO> getCardNull() {
         return cardService.getCardNull();
     }
 }

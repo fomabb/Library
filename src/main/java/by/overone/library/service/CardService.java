@@ -2,6 +2,7 @@ package by.overone.library.service;
 
 import by.overone.library.dto.CardDataDTO;
 import by.overone.library.model.Card;
+import by.overone.library.model.CardNullDTO;
 
 import java.util.List;
 
@@ -17,5 +18,5 @@ public interface CardService {
 
     List<CardDataDTO> getCardDelivery(long id);
 
-    List<CardDataDTO> getCardNull();
+    List<CardNullDTO> getCardNull();
 }

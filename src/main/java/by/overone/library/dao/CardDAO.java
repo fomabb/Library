@@ -2,6 +2,7 @@ package by.overone.library.dao;
 
 import by.overone.library.dto.CardDataDTO;
 import by.overone.library.model.Card;
+import by.overone.library.model.CardNullDTO;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,7 +19,7 @@ public interface CardDAO {
 
     List<CardDataDTO> getCardDelivery(long id);
 
-    List<CardDataDTO> getCardNull();
+    List<CardNullDTO> getCardNull();
 
     Optional<Card> getCardReturn(long user_id, long book_id);
 }

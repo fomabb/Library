@@ -7,6 +7,7 @@ import by.overone.library.dto.CardDataDTO;
 import by.overone.library.exception.EntityNotFoundException;
 import by.overone.library.exception.ExceptionCode;
 import by.overone.library.model.Card;
+import by.overone.library.model.CardNullDTO;
 import by.overone.library.service.BookService;
 import by.overone.library.service.CardService;
 import lombok.RequiredArgsConstructor;
@@ -49,20 +50,14 @@ public class CardServiceImpl implements CardService {
 
 //        if () { // Implement a check for counter
 
-        log.info(card.toString());
-
         card.setUsers_user_id(cardDTO.getUsers_user_id());
         card.setBooks_book_id(cardDTO.getBooks_book_id());
         card.setDate_of_receiving(null);
         card.setDelivery_date(LocalDateTime.now());
         cardDAO.cardDelivery(card);
 
-        log.info(card.toString());
-
         BookDataDTO book = bookService.getBookById(cardDTO.getBooks_book_id());
         bookDAO.updateBookCounter(cardDTO.getBooks_book_id(), book.getBook_count() + 1);
-
-            log.info("1");
 
 //        } else {
 //            throw new EntityNotFoundException(ExceptionCode.NOT_EXISTING_BOOK.getErrorCode());
@@ -85,7 +80,7 @@ public class CardServiceImpl implements CardService {
     }
 
     @Override
-    public List<CardDataDTO> getCardNull() {
+    public List<CardNullDTO> getCardNull() {
         return cardDAO.getCardNull();
     }
 }

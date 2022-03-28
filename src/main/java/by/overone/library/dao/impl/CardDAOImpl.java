@@ -4,6 +4,7 @@ import by.overone.library.dao.CardDAO;
 import by.overone.library.dto.CardDataDTO;
 import by.overone.library.mapper.CardRowMapper;
 import by.overone.library.model.Card;
+import by.overone.library.model.CardNullDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -57,8 +58,8 @@ public class CardDAOImpl implements CardDAO {
     }
 
     @Override
-    public List<CardDataDTO> getCardNull() {
-        return jdbcTemplate.query(GET_CARD_FOR_DELIVERY_NULL, new BeanPropertyRowMapper<>(CardDataDTO.class));
+    public List<CardNullDTO> getCardNull() {
+        return jdbcTemplate.query(GET_CARD_FOR_DELIVERY_NULL, new BeanPropertyRowMapper<>(CardNullDTO.class));
     }
 
     @Override
