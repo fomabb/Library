@@ -2,7 +2,7 @@ package by.overone.library.controller;
 
 import by.overone.library.dto.CardDataDTO;
 import by.overone.library.model.Card;
-import by.overone.library.model.CardNullDTO;
+import by.overone.library.dto.CardNullDTO;
 import by.overone.library.service.CardService;
 import lombok.AllArgsConstructor;
 import org.springframework.validation.annotation.Validated;
@@ -35,7 +35,7 @@ public class CardController {
 
 
     @GetMapping("/{id}")
-    public List<CardDataDTO> getCardById(@Validated @PathVariable long id) {
+    public List<CardNullDTO> getCardById(@Validated @PathVariable long id) {
         return cardService.getCardById(id);
     }
 
