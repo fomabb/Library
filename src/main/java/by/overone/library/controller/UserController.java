@@ -47,13 +47,7 @@ public class UserController {
         return userService.getUserByFullName(name, surname);
     }
 
-    @GetMapping("/hello")
-    public String read() {
-        System.out.println("Hello");
-        return "Hello";
-    }
-
-    @PostMapping
+    @PostMapping("/add")
     public void registrationUser(@Validated @RequestBody UserRegistrationDTO userRegistrationDTO) {
         userService.addUser(userRegistrationDTO);
     }

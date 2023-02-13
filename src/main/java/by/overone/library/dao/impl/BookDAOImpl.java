@@ -22,7 +22,8 @@ public class BookDAOImpl implements BookDAO {
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     private final static String GET_ALL_BOOKS_SQL = "SELECT * FROM bibliophile.books";
-    private final static String GET_BOOKS_BY_ID_ACTIVE_SQL = "SELECT * FROM books WHERE book_id=? AND book_status='ACTIVE'";
+//    private final static String GET_BOOKS_BY_ID_ACTIVE_SQL = "SELECT * FROM books WHERE book_id=? AND book_status='ACTIVE'";
+    private final static String GET_BOOKS_BY_ID_ACTIVE_SQL = "SELECT * FROM books WHERE book_id=?";
     private final static String GET_BOOKS_BY_ID_INACTIVE_SQL = "SELECT * FROM books WHERE book_id=? AND book_status='INACTIVE'";
     private final static String GET_BOOKS_BY_ID_SQL = "SELECT * FROM books WHERE book_id=?";
     private final static String GET_BOOKS_BY_STATUS_SQL = "SELECT * FROM books WHERE book_status=?";
